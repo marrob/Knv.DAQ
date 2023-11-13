@@ -24,9 +24,6 @@ namespace Knv.DAQ
             Application.SetCompatibleTextRenderingDefault(false);
             new App();
         }
-
-
-
         class App
         {
             readonly IMainForm _mainForm;
@@ -39,13 +36,11 @@ namespace Knv.DAQ
                 _mainForm.Text = AppConstants.SoftwareTitle;
                 _mainForm.Shown += MainForm_Shown;
 
-
                 DaqIo.Instance.TracingEnable = true;
 
                 _timer = new Timer();
                 _timer.Interval = 250;
                 _timer.Start();
-
 
                 DaqIo.Instance.ConnectionChanged += (o, e) =>
                 {
@@ -113,7 +108,5 @@ namespace Knv.DAQ
                 }
             }
         }
-
-
     }
 }

@@ -46,5 +46,17 @@ namespace Knv.DAQ.Properties {
                 this["TracingEnable"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("1")]
+        public int SamplePerSec {
+            get {
+                return ((int)(this["SamplePerSec"]));
+            }
+            set {
+                this["SamplePerSec"] = value;
+            }
+        }
     }
 }

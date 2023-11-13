@@ -2,13 +2,14 @@
 namespace Knv.DAQ.View
 {
     using Knv.DAQ.Events;
+    using Knv.DAQ.Properties;
     using System;
     using System.Windows.Forms;
 
     public partial class DaqControl : UserControl
     {
 
-        Timer _samplingTimer = new Timer();
+        readonly Timer _samplingTimer = new Timer();
 
         public DaqControl()
         {
@@ -16,7 +17,6 @@ namespace Knv.DAQ.View
 
             textBoxAO1.Text = 0.ToString();
             textBoxAO2.Text = 0.ToString();
-
 
             buttonReset_Click(null, EventArgs.Empty);
 
@@ -40,8 +40,7 @@ namespace Knv.DAQ.View
                 Enabled = e.IsOpen;
             }));
 
-            var samplePerSec = 1;
-            numericUpDownSPS.Value = samplePerSec;
+            numericUpDownSPS.Value = Settings.Default.SamplePerSec;
             _samplingTimer.Interval = (int)(1.0 / (double)numericUpDownSPS.Value * 1000);
             _samplingTimer.Enabled = true;
             _samplingTimer.Start();
@@ -81,6 +80,7 @@ namespace Knv.DAQ.View
             {
                 double ao1 = trackBarAO1.Value / 10.0;
                 textBoxAO1.Text = ao1.ToString();
+                DaqIo.Instance.AO1 = ao1;
             }
             catch (Exception ex)
             {
@@ -94,6 +94,7 @@ namespace Knv.DAQ.View
             {
                 double ao2 = trackBarAO2.Value / 10.0;
                 textBoxAO2.Text = ao2.ToString();
+                DaqIo.Instance.AO1 = ao2;
             }
             catch (Exception ex) 
             {
@@ -111,7 +112,9 @@ namespace Knv.DAQ.View
 
         private void numericUpDownSPS_ValueChanged(object sender, EventArgs e)
         {
+            Settings.Default.SamplePerSec = (int)numericUpDownSPS.Value;
             _samplingTimer.Interval = (int)(1.0/(double)numericUpDownSPS.Value * 1000);
+            Settings.Default.Save();
         }
     }
 }
