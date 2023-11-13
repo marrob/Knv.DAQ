@@ -1,14 +1,16 @@
 ﻿
 
-namespace Knv.Fan
+namespace Knv.DAQ
 {
     using System;
     using System.Collections.Generic;
+    using System.IO.Ports;
     using System.Linq;
     using System.Threading.Tasks;
     using System.Windows.Forms;
     using Events;
-    using Knv.Fan.Controls;
+    using Knv.DAQ.Controls;
+    using Knv.DAQ.Properties;
 
     internal static class Program
     {
@@ -38,30 +40,30 @@ namespace Knv.Fan
                 _mainForm.Shown += MainForm_Shown;
 
 
-                SerialIo.Instance.TracingEnable = true;
+                DaqIo.Instance.TracingEnable = true;
 
                 _timer = new Timer();
                 _timer.Interval = 250;
                 _timer.Start();
 
 
-                SerialIo.Instance.ConnectionChanged += (o, e) =>
+                DaqIo.Instance.ConnectionChanged += (o, e) =>
                 {
-                    EventAggregator.Instance.Publish(new ConnectionChangedAppEvent(SerialIo.Instance.IsOpen));
+                    EventAggregator.Instance.Publish(new ConnectionChangedAppEvent(DaqIo.Instance.IsOpen));
                 };
 
 
                 /*** Tracing Update ***/
                 _timer.Tick += (o, e) =>
                 {
-                    for (int i = 0; SerialIo.Instance.TraceQueue.Count != 0; i++)
+                    for (int i = 0; DaqIo.Instance.TraceQueue.Count != 0; i++)
                     {
-                        string str = SerialIo.Instance.TraceQueue.Dequeue();
+                        string str = DaqIo.Instance.TraceQueue.Dequeue();
                         if (str.Contains("Rx:"))
                             _mainForm.RichTextBoxTrace.AppendText(str + "\r\n", System.Drawing.Color.DarkGreen, false);
                         else if (str.Contains("Tx:"))
                             _mainForm.RichTextBoxTrace.AppendText(str + "\r\n", System.Drawing.Color.Blue);
-                        else if (str.Contains("ERROR"))
+                        else if (str.ToUpper().Contains("ERROR"))
                             _mainForm.RichTextBoxTrace.AppendText(str + "\r\n", System.Drawing.Color.Red);
                         else
                             _mainForm.RichTextBoxTrace.AppendText(str + "\r\n", System.Drawing.Color.Black);
@@ -76,6 +78,7 @@ namespace Knv.Fan
                     new Commands.ComPortSelectCommand(),
                     new Commands.ConnectCommand(),
                     new Commands.HowIsWorkingCommand(),
+                    new Commands.TraceingEnableCommand(),
                 };
                 #endregion
 
@@ -99,6 +102,15 @@ namespace Knv.Fan
             private void MainForm_Shown(object sender, EventArgs e)
             {
                 EventAggregator.Instance.Publish(new ShowAppEvent());
+
+                /*** Auto connect ***/
+                if (Settings.Default.SeriaPortName != null)
+                {
+                    if (SerialPort.GetPortNames().Contains(Settings.Default.SeriaPortName))
+                    {
+                        DaqIo.Instance.Open(Settings.Default.SeriaPortName);
+                    }
+                }
             }
         }
 

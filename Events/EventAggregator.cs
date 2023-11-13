@@ -1,4 +1,4 @@
-﻿namespace Knv.Fan.Events
+﻿namespace Knv.DAQ.Events
 {
 
     using System;

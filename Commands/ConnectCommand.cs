@@ -1,11 +1,12 @@
 ﻿
-namespace Knv.Fan.Commands
+namespace Knv.DAQ.Commands
 {
     using System;
     using System.Diagnostics;
     using System.Windows.Forms;
     using Properties;
     using Events;
+    using System.Drawing;
 
     class ConnectCommand : ToolStripMenuItem
     {
@@ -21,11 +22,13 @@ namespace Knv.Fan.Commands
                 if (e.IsOpen)
                 {
                     Text = "Disconnect";
+                    BackColor = Color.Orange;
                     //Image = Resources.Stop_Normal_Red48;
                 }
                 else
                 {
                     Text = "Connect";
+                    BackColor = SystemColors.Control;
                     //Image = Resources.Play_Hot48;
                 }
             }));
@@ -34,10 +37,10 @@ namespace Knv.Fan.Commands
         protected override void OnClick(EventArgs e)
         {
             base.OnClick(e);
-            if(SerialIo.Instance.IsOpen)
-                 SerialIo.Instance.Close();
+            if(DaqIo.Instance.IsOpen)
+                 DaqIo.Instance.Close();
             else
-                SerialIo.Instance.Open(Settings.Default.SeriaPortName);
+                DaqIo.Instance.Open(Settings.Default.SeriaPortName);
                
         }
     }

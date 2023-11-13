@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace Knv.Fan.Properties {
+namespace Knv.DAQ.Properties {
     
     
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
@@ -32,6 +32,18 @@ namespace Knv.Fan.Properties {
             }
             set {
                 this["SeriaPortName"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("False")]
+        public bool TracingEnable {
+            get {
+                return ((bool)(this["TracingEnable"]));
+            }
+            set {
+                this["TracingEnable"] = value;
             }
         }
     }

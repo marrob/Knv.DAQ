@@ -4,10 +4,10 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{96728E9B-C309-4045-B66C-3ABE299B79D3}</ProjectGuid>
+    <ProjectGuid>{3D62639A-C54D-47E0-B6B6-56AB73046DAB}</ProjectGuid>
     <OutputType>WinExe</OutputType>
-    <RootNamespace>Knv.Fun</RootNamespace>
-    <AssemblyName>Knv.Fun</AssemblyName>
+    <RootNamespace>Knv.DAQ</RootNamespace>
+    <AssemblyName>Knv.DAQ</AssemblyName>
     <TargetFrameworkVersion>v4.6.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
@@ -32,9 +32,13 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>Elegantthemes-Softies-Meter.ico</ApplicationIcon>
+  </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Windows.Forms.DataVisualization" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -56,6 +60,12 @@
     <Compile Include="Commands\HowIsWorkingCommand.cs">
       <SubType>Component</SubType>
     </Compile>
+    <Compile Include="Commands\TraceingEnableCommand.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Controls\KnvMovingChart.cs">
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="Controls\KnvRichTextBox.cs">
       <SubType>Component</SubType>
     </Compile>
@@ -64,7 +74,7 @@
     <Compile Include="Events\EventAggregator.cs" />
     <Compile Include="Events\ShowAppEvent.cs" />
     <Compile Include="Events\UpdatingStateChangedAppEvent.cs" />
-    <Compile Include="IO\SerialIo.cs" />
+    <Compile Include="IO\DaqIo.cs" />
     <Compile Include="StatusBar\UpTime.cs">
       <SubType>Component</SubType>
     </Compile>
@@ -97,14 +107,14 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="View\FanControl.cs">
+    <Compile Include="View\DaqControl.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="View\FanControl.Designer.cs">
-      <DependentUpon>FanControl.cs</DependentUpon>
+    <Compile Include="View\DaqControl.Designer.cs">
+      <DependentUpon>DaqControl.cs</DependentUpon>
     </Compile>
-    <EmbeddedResource Include="View\FanControl.resx">
-      <DependentUpon>FanControl.cs</DependentUpon>
+    <EmbeddedResource Include="View\DaqControl.resx">
+      <DependentUpon>DaqControl.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="View\HowIsWorkingForm.resx">
       <DependentUpon>HowIsWorkingForm.cs</DependentUpon>
@@ -117,6 +127,7 @@
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
     </Compile>
     <EmbeddedResource Include="View\MainForm.resx">
       <DependentUpon>MainForm.cs</DependentUpon>
@@ -136,6 +147,9 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="UnitTest\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Elegantthemes-Softies-Meter.ico" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

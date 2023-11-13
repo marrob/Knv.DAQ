@@ -1,4 +1,4 @@
-﻿namespace Knv.Fan
+﻿namespace Knv.DAQ
 {
     using System.Linq;
     using System.Text;

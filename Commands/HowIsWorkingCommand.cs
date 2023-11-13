@@ -1,5 +1,5 @@
 ﻿
-namespace Knv.Fan.Commands
+namespace Knv.DAQ.Commands
 {
    // using Properties;
     using System;

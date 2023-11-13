@@ -1,4 +1,4 @@
-﻿namespace Knv.Fan.View
+﻿namespace Knv.DAQ.View
 {
     partial class HowIsWorkingForm
     {

@@ -1,6 +1,6 @@
 ﻿
 
-namespace Knv.Fan.StatusBar
+namespace Knv.DAQ.StatusBar
 {
     using System;
     using System.Windows.Forms;
@@ -20,9 +20,17 @@ namespace Knv.Fan.StatusBar
 
             timer.Tick += (s, e) =>
             {
-                if (SerialIo.Instance.IsOpen)
+                if (DaqIo.Instance.IsOpen)
                 {
-                    Text = "UpTime Counter: " + SerialIo.Instance.GetUpTime();
+                    try
+                    {
+                        Text = "UpTime Counter: " + DaqIo.Instance.GetUpTime();
+                    }
+                    catch (Exception ex) 
+                    {
+                        DaqIo.Instance.TraceError($"Error:{ex.Message}");
+                    } 
+                   
                 }
             };
         }

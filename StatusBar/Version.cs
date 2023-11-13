@@ -1,6 +1,6 @@
 ﻿
 
-namespace Knv.Fan.StatusBar
+namespace Knv.DAQ.StatusBar
 {
     using System.Windows.Forms;
 

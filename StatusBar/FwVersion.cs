@@ -1,4 +1,4 @@
-﻿namespace Knv.Fan.StatusBar
+﻿namespace Knv.DAQ.StatusBar
 {
     using System;
     using System.Windows.Forms;
@@ -16,7 +16,7 @@
             EventAggregator.Instance.Subscribe((Action<ConnectionChangedAppEvent>)(e =>
             {
                 if (e.IsOpen)
-                   Text = SerialIo.Instance.GetVersion();
+                   Text = DaqIo.Instance.GetVersion();
                 else
                     Text = AppConstants.ValueNotAvailable2;
             }));

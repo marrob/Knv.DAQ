@@ -1,5 +1,5 @@
 ﻿
-namespace Knv.Fan
+namespace Knv.DAQ
 {
     using System;
     using System.Collections.Generic;
@@ -9,9 +9,11 @@ namespace Knv.Fan
     using System.IO.Ports;
     using System.Globalization;
     using System.ComponentModel;
-    public class SerialIo
+    using System.Drawing.Drawing2D;
+
+    public class DaqIo
     {
-        public static SerialIo Instance { get; } = new SerialIo();
+        public static DaqIo Instance { get; } = new DaqIo();
         const string GenericTimestampFormat = "yyyy.MM.dd HH:mm:ss";
         public event EventHandler ConnectionChanged;
         public event EventHandler ErrorHappened;
@@ -66,8 +68,8 @@ namespace Knv.Fan
             }
             catch (Exception ex)
             {
-                _sp.Close();
-                Trace("IO ERROR Serial Port is: " + port + " Open fail... beacuse:" + ex.Message);
+                _sp?.Close();
+                TraceError("IO ERROR Serial Port is: " + port + " Open fail... beacuse:" + ex.Message);
                 OnConnectionChanged();
             }
         }
@@ -87,7 +89,7 @@ namespace Knv.Fan
             }
             catch (Exception ex)
             {
-                Trace("IO-ERROR:" + ex.Message);
+                TraceError("IO-ERROR:" + ex.Message);
             }
         }
 
@@ -172,7 +174,7 @@ namespace Knv.Fan
 
             } while (rxErrors < 3 && txErrors < 3);
 
-            Trace("There were three consecutive io error. I close the connection.");
+            TraceError("There were three consecutive io error. I close the connection.");
             Close();
             throw exception;
         }
@@ -225,17 +227,24 @@ namespace Knv.Fan
 
         public void Close()
         {
-            TraceQueue.Enqueue(DateTime.Now.ToString(GenericTimestampFormat) + " " + "Serial Port is: " + "Close");
+            Trace("Serial Port is: " + "Close");
             _sp?.Close();
             OnConnectionChanged();
         }
 
         internal void Trace(string msg)
         {
-            if (!TracingEnable)
-                return;
+            if (TracingEnable)
+            {
+                TraceLines++;
+                TraceQueue.Enqueue(DateTime.Now.ToString(GenericTimestampFormat) + " " + msg);
+            }
+        }
+
+        internal void TraceError(string errorMsg)
+        {
             TraceLines++;
-            TraceQueue.Enqueue(DateTime.Now.ToString(GenericTimestampFormat) + " " + msg);
+            TraceQueue.Enqueue(DateTime.Now.ToString(GenericTimestampFormat) + " " + errorMsg);
         }
 
         public void TraceClear()
@@ -302,46 +311,84 @@ namespace Knv.Fan
                 return resp;
         }
 
-        public int PwmDutyCycle
-        {
-            get { return int.Parse(WriteRead("PWM:D?"), NumberStyles.AllowHexSpecifier, CultureInfo.GetCultureInfo("en-US")); }
-            set { WriteRead($"PWM:D {(int)value:X2}"); }
-        }
-
-        public int PwmFrequency
-        {
-            get { return int.Parse(WriteRead("PWM:F?"), NumberStyles.AllowHexSpecifier, CultureInfo.GetCultureInfo("en-US")); }
-            //  set { WriteRead($"PWM:F {(int)value:X}"); }
-        }
-
-        public double AIN0
-        {
-            get 
-            {
-                int adc =  int.Parse(WriteRead("AIN0?"), NumberStyles.AllowHexSpecifier, CultureInfo.GetCultureInfo("en-US"));
-                double value = (3.3/4096.0) * adc;
-                double rounded = Math.Round(value, 3);
-                return rounded;
-            }
-        }
-
-        public double AIN1
+        public double AO1
         {
             get
             {
-                int adc = int.Parse(WriteRead("AIN1?"), NumberStyles.AllowHexSpecifier, CultureInfo.GetCultureInfo("en-US"));
-                double value = (3.3 / 4096.0) * adc;
+                int adc = int.Parse(WriteRead("AO1?"), NumberStyles.AllowHexSpecifier, CultureInfo.GetCultureInfo("en-US"));
+                double value = (3.3 / 4095.0) * adc * 3;
+                double rounded = Math.Round(value, 2);
+                return rounded;
+            }
+            set 
+            {
+                double divVolts = value / 3;
+                int adc = (int)(divVolts / (3.3 / 4095.0));
+                if (adc >= 4095)
+                    adc = 4095;
+                WriteRead($"AO1 {adc:X2}");
+
+            }
+        }
+
+        public double AO2
+        {
+            get
+            {
+                int adc = int.Parse(WriteRead("AO2?"), NumberStyles.AllowHexSpecifier, CultureInfo.GetCultureInfo("en-US"));
+                double value = (3.3 / 4095.0) * adc * 3;
+                double rounded = Math.Round(value, 2);
+                return rounded;
+            }
+            set
+            {
+                double divVolts = value / 3;
+                int adc = (int)(divVolts / (3.3 / 4095.0));
+                if (adc >= 4095)
+                    adc = 4095;
+                WriteRead($"AO2 {adc:X2}");
+            }
+        }
+
+        public double AI1
+        {
+            get 
+            {
+                int adc =  int.Parse(WriteRead("AI1?"), NumberStyles.AllowHexSpecifier, CultureInfo.GetCultureInfo("en-US"));
+                double value = (3.3/ 4095.0) * adc * 3.06;
                 double rounded = Math.Round(value, 2);
                 return rounded;
             }
         }
 
-        public double AIN2
+        public double AI2
         {
             get
             {
-                int adc = int.Parse(WriteRead("AIN2?"), NumberStyles.AllowHexSpecifier, CultureInfo.GetCultureInfo("en-US"));
-                double value = (3.3 / 4096.0) * adc;
+                int adc = int.Parse(WriteRead("AI2?"), NumberStyles.AllowHexSpecifier, CultureInfo.GetCultureInfo("en-US"));
+                double value = (3.3 / 4095.0) * adc * 3.06;
+                double rounded = Math.Round(value, 2);
+                return rounded;
+            }
+        }
+
+        public double AI3
+        {
+            get
+            {
+                int adc = int.Parse(WriteRead("AI3?"), NumberStyles.AllowHexSpecifier, CultureInfo.GetCultureInfo("en-US"));
+                double value = (3.3 / 4095.0) * adc * 3.06;
+                double rounded = Math.Round(value, 2);
+                return rounded;
+            }
+        }
+
+        public double AI4
+        {
+            get
+            {
+                int adc = int.Parse(WriteRead("AI4?"), NumberStyles.AllowHexSpecifier, CultureInfo.GetCultureInfo("en-US"));
+                double value = (3.3 / 4095.0) * adc * 3.06;
                 double rounded = Math.Round(value, 2);
                 return rounded;
             }

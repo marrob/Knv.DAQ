@@ -1,5 +1,5 @@
 ﻿
-namespace Knv.Fan.Controls
+namespace Knv.DAQ.Controls
 {
     using System;
     using System.Text;
