@@ -47,7 +47,6 @@ namespace Knv.DAQ
                     EventAggregator.Instance.Publish(new ConnectionChangedAppEvent(DaqIo.Instance.IsOpen));
                 };
 
-
                 /*** Tracing Update ***/
                 _timer.Tick += (o, e) =>
                 {

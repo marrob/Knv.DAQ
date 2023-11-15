@@ -44,15 +44,15 @@
             // 
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(883, 24);
+            this.menuStrip1.Size = new System.Drawing.Size(1004, 24);
             this.menuStrip1.TabIndex = 0;
             this.menuStrip1.Text = "menuStrip1";
             // 
             // statusStrip1
             // 
-            this.statusStrip1.Location = new System.Drawing.Point(0, 627);
+            this.statusStrip1.Location = new System.Drawing.Point(0, 759);
             this.statusStrip1.Name = "statusStrip1";
-            this.statusStrip1.Size = new System.Drawing.Size(883, 22);
+            this.statusStrip1.Size = new System.Drawing.Size(1004, 22);
             this.statusStrip1.TabIndex = 1;
             this.statusStrip1.Text = "statusStrip1";
             // 
@@ -70,8 +70,8 @@
             // splitContainer1.Panel2
             // 
             this.splitContainer1.Panel2.Controls.Add(this.knvRichTextBox1);
-            this.splitContainer1.Size = new System.Drawing.Size(883, 603);
-            this.splitContainer1.SplitterDistance = 446;
+            this.splitContainer1.Size = new System.Drawing.Size(1004, 735);
+            this.splitContainer1.SplitterDistance = 543;
             this.splitContainer1.TabIndex = 2;
             // 
             // fanControl1
@@ -79,7 +79,7 @@
             this.fanControl1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.fanControl1.Location = new System.Drawing.Point(0, 0);
             this.fanControl1.Name = "fanControl1";
-            this.fanControl1.Size = new System.Drawing.Size(883, 446);
+            this.fanControl1.Size = new System.Drawing.Size(1004, 543);
             this.fanControl1.TabIndex = 0;
             // 
             // knvRichTextBox1
@@ -89,7 +89,7 @@
             this.knvRichTextBox1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.knvRichTextBox1.Location = new System.Drawing.Point(0, 0);
             this.knvRichTextBox1.Name = "knvRichTextBox1";
-            this.knvRichTextBox1.Size = new System.Drawing.Size(883, 153);
+            this.knvRichTextBox1.Size = new System.Drawing.Size(1004, 188);
             this.knvRichTextBox1.TabIndex = 0;
             this.knvRichTextBox1.Text = "";
             // 
@@ -97,13 +97,14 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(883, 649);
+            this.ClientSize = new System.Drawing.Size(1004, 781);
             this.Controls.Add(this.splitContainer1);
             this.Controls.Add(this.statusStrip1);
             this.Controls.Add(this.menuStrip1);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MainMenuStrip = this.menuStrip1;
             this.Name = "MainForm";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Form1";
             this.splitContainer1.Panel1.ResumeLayout(false);
             this.splitContainer1.Panel2.ResumeLayout(false);

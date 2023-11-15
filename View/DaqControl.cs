@@ -20,6 +20,11 @@ namespace Knv.DAQ.View
 
             buttonReset_Click(null, EventArgs.Empty);
 
+            textBoxAI1Title.Text = Settings.Default.AI1Title;
+            textBoxAI1Multiplier.Text = Settings.Default.AI1Multiplier.ToString("N3");
+            textBoxAI1Offset.Text = Settings.Default.AI1Offset.ToString("N3");
+
+
             EventAggregator.Instance.Subscribe((Action<ConnectionChangedAppEvent>)(e =>
             {
                 if (e.IsOpen) 
@@ -60,6 +65,8 @@ namespace Knv.DAQ.View
 
                     textBoxAI1.Text = ai1.ToString();
                     knvMovingChartAO1.AddSample(ai1);
+                    AI1CustomValue.Text = (ai1 * Settings.Default.AI1Multiplier + Settings.Default.AI1Offset).ToString("N2");
+
                     textBoxAI2.Text = ai2.ToString();
                     knvMovingChartAO2.AddSample(ai2);
                     textBoxAI3.Text = ai3.ToString();
@@ -94,7 +101,7 @@ namespace Knv.DAQ.View
             {
                 double ao2 = trackBarAO2.Value / 10.0;
                 textBoxAO2.Text = ao2.ToString();
-                DaqIo.Instance.AO1 = ao2;
+                DaqIo.Instance.AO2 = ao2;
             }
             catch (Exception ex) 
             {
@@ -114,6 +121,21 @@ namespace Knv.DAQ.View
         {
             Settings.Default.SamplePerSec = (int)numericUpDownSPS.Value;
             _samplingTimer.Interval = (int)(1.0/(double)numericUpDownSPS.Value * 1000);
+            Settings.Default.Save();
+        }
+
+        private void textBoxAI1Multiplier_Validated(object sender, EventArgs e)
+        {
+            if (double.TryParse(textBoxAI1Multiplier.Text, out double value))
+            { 
+                Settings.Default.AI1Multiplier = value; 
+                Settings.Default.Save();
+            }
+        }
+
+        private void textBoxAI1Title_Validated(object sender, EventArgs e)
+        {
+            Settings.Default.AI1Title = textBoxAI1Title.Text;
             Settings.Default.Save();
         }
     }

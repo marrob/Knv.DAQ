@@ -58,5 +58,41 @@ namespace Knv.DAQ.Properties {
                 this["SamplePerSec"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("AI1")]
+        public string AI1Title {
+            get {
+                return ((string)(this["AI1Title"]));
+            }
+            set {
+                this["AI1Title"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("1")]
+        public double AI1Multiplier {
+            get {
+                return ((double)(this["AI1Multiplier"]));
+            }
+            set {
+                this["AI1Multiplier"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("0")]
+        public double AI1Offset {
+            get {
+                return ((double)(this["AI1Offset"]));
+            }
+            set {
+                this["AI1Offset"] = value;
+            }
+        }
     }
 }
