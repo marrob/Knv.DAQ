@@ -3,13 +3,22 @@ namespace Knv.DAQ.Controls
 {
     using System.ComponentModel;
     using System.Diagnostics;
-    using System.Security.Cryptography.X509Certificates;
     using System.Windows.Forms.DataVisualization.Charting;
 
-    public class KnvMovingChart: Chart
-    {       
-        public int VisibleSamples { get; set; } = 10;
-        public int VerticalMaximum { get; set; } = 10;
+    public class KnvMovingChart : Chart
+    {
+
+        public double VisibleSamples { get; set; } = 10;
+        public double VerticalMaximum { 
+            get 
+            { 
+                return ChartAreas[0].AxisY.Maximum; 
+            }
+            set
+            {
+                ChartAreas[0].AxisY.Maximum = value;
+            } 
+        }
         public int SampleIndex { get; set; } = 0;
 
         [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
@@ -36,7 +45,8 @@ namespace Knv.DAQ.Controls
             //Values
             ChartAreas[0].AxisY.IntervalType = DateTimeIntervalType.Number;
             ChartAreas[0].AxisY.Minimum = 0;
-            ChartAreas[0].AxisY.Maximum = VerticalMaximum;
+            //ChartAreas[0].AxisY.Maximum = VerticalMaximum;
+            VerticalMaximum = 10;
 
             Series.Clear();
             var seriesItem = new Series();
@@ -51,7 +61,7 @@ namespace Knv.DAQ.Controls
         {
            Series[0].Points.Clear();
 
-            for (SampleIndex = 0; SampleIndex < 10; SampleIndex++)
+            for (SampleIndex = 0; SampleIndex < VisibleSamples; SampleIndex++)
             {
                 Series[0].Points.AddXY(SampleIndex, 0);
                 ChartAreas[0].AxisX.Minimum = Series[0].Points[0].XValue;

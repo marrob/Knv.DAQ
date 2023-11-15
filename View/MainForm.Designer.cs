@@ -32,10 +32,8 @@
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
-            this.fanControl1 = new Knv.DAQ.View.DaqControl();
             this.knvRichTextBox1 = new Knv.DAQ.Controls.KnvRichTextBox();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
-            this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
             this.splitContainer1.SuspendLayout();
             this.SuspendLayout();
@@ -63,24 +61,12 @@
             this.splitContainer1.Name = "splitContainer1";
             this.splitContainer1.Orientation = System.Windows.Forms.Orientation.Horizontal;
             // 
-            // splitContainer1.Panel1
-            // 
-            this.splitContainer1.Panel1.Controls.Add(this.fanControl1);
-            // 
             // splitContainer1.Panel2
             // 
             this.splitContainer1.Panel2.Controls.Add(this.knvRichTextBox1);
             this.splitContainer1.Size = new System.Drawing.Size(1004, 735);
             this.splitContainer1.SplitterDistance = 543;
             this.splitContainer1.TabIndex = 2;
-            // 
-            // fanControl1
-            // 
-            this.fanControl1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.fanControl1.Location = new System.Drawing.Point(0, 0);
-            this.fanControl1.Name = "fanControl1";
-            this.fanControl1.Size = new System.Drawing.Size(1004, 543);
-            this.fanControl1.TabIndex = 0;
             // 
             // knvRichTextBox1
             // 
@@ -106,7 +92,6 @@
             this.Name = "MainForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Form1";
-            this.splitContainer1.Panel1.ResumeLayout(false);
             this.splitContainer1.Panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).EndInit();
             this.splitContainer1.ResumeLayout(false);
@@ -121,7 +106,6 @@
         private System.Windows.Forms.StatusStrip statusStrip1;
         private System.Windows.Forms.SplitContainer splitContainer1;
         private Controls.KnvRichTextBox knvRichTextBox1;
-        private View.DaqControl fanControl1;
     }
 }
 

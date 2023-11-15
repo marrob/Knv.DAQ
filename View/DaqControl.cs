@@ -25,6 +25,10 @@ namespace Knv.DAQ.View
             textBoxAI1Offset.Text = Settings.Default.AI1Offset.ToString("N3");
 
 
+            //Vertical Axis Maximum: 10V * Multiplier + Offset
+            knvMovingChartAO1.VerticalMaximum = 10 * Settings.Default.AI1Multiplier + Settings.Default.AI1Offset;
+
+
             EventAggregator.Instance.Subscribe((Action<ConnectionChangedAppEvent>)(e =>
             {
                 if (e.IsOpen) 
@@ -64,8 +68,11 @@ namespace Knv.DAQ.View
                     var ai4 = DaqIo.Instance.AI4;
 
                     textBoxAI1.Text = ai1.ToString();
-                    knvMovingChartAO1.AddSample(ai1);
-                    AI1CustomValue.Text = (ai1 * Settings.Default.AI1Multiplier + Settings.Default.AI1Offset).ToString("N2");
+
+                    var customAi1 = ai1 * Settings.Default.AI1Multiplier + Settings.Default.AI1Offset;
+
+                    AI1CustomValue.Text = customAi1.ToString("N2");
+                    knvMovingChartAO1.AddSample(customAi1);
 
                     textBoxAI2.Text = ai2.ToString();
                     knvMovingChartAO2.AddSample(ai2);
