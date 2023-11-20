@@ -2,7 +2,6 @@
 namespace Knv.DAQ.Controls
 {
     using System.ComponentModel;
-    using System.Diagnostics;
     using System.Windows.Forms.DataVisualization.Charting;
 
     public class KnvMovingChart : Chart
@@ -10,10 +9,18 @@ namespace Knv.DAQ.Controls
 
         [Category("KNV")]
         [DefaultValue(10)]
-        public double VisibleSamples 
+        int _samples;     
+        public int Samples
         {
-            get { return ChartAreas[0].AxisX.Maximum; }
-            set { ChartAreas[0].AxisX.Maximum = value; }
+            get { return _samples; }
+            set
+            {
+                if (_samples != value)
+                {
+                    _samples = value;
+                    ChangeSample();
+                }
+            }
         }
 
         [Category("KNV")]
@@ -49,7 +56,7 @@ namespace Knv.DAQ.Controls
             //Timea
             ChartAreas[0].AxisX.IntervalType = DateTimeIntervalType.Number;
             ChartAreas[0].AxisX.Minimum = 0;
-            ChartAreas[0].AxisX.Maximum = VisibleSamples;
+            ChartAreas[0].AxisX.Maximum = _samples;
 
             //Values
             ChartAreas[0].AxisY.IntervalType = DateTimeIntervalType.Number;
@@ -70,7 +77,7 @@ namespace Knv.DAQ.Controls
         {
            Series[0].Points.Clear();
 
-            for (SampleIndex = 0; SampleIndex < VisibleSamples; SampleIndex++)
+            for (SampleIndex = 0; SampleIndex < Samples; SampleIndex++)
             {
                 Series[0].Points.AddXY(SampleIndex, 0);
                 ChartAreas[0].AxisX.Minimum = Series[0].Points[0].XValue;
@@ -81,12 +88,17 @@ namespace Knv.DAQ.Controls
         public void AddSample(double y)
         {
             Series[0].Points.AddXY(SampleIndex, y);
-            if (Series[0].Points.Count > VisibleSamples)
+            if (Series[0].Points.Count > Samples)
                 Series[0].Points.RemoveAt(0);
 
             ChartAreas[0].AxisX.Minimum = Series[0].Points[0].XValue;
             ChartAreas[0].AxisX.Maximum = SampleIndex;
             SampleIndex++;
+        }
+
+        void ChangeSample()
+        {
+            ChartAreas[0].AxisX.Maximum = _samples;
         }
     }
 }

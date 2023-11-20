@@ -54,6 +54,21 @@ namespace Knv.DAQ.Controls
 
         [Category("KNV")]
         public double MaxRawValue { get; set; } = 10;
+
+        [Category("KNV")]
+        [DefaultValue(10)]
+        public int Samples 
+        {
+            get 
+            {
+                return knvMovingChart1.Samples; 
+            }
+            set 
+            { 
+                knvMovingChart1.Samples = value;
+                numericUpDownSamples.Value = value;
+            }
+        }
         
 
         public KnvAnalogInputControl()
@@ -98,6 +113,11 @@ namespace Knv.DAQ.Controls
             {
                 textBoxOffset.BackColor = Color.Red;
             }
+        }
+
+        private void numericUpDownSamples_ValueChanged(object sender, EventArgs e)
+        {
+            Samples = (int)numericUpDownSamples.Value;
         }
     }
 }

@@ -102,21 +102,25 @@
             knvAnalogInputControl1.Multiplier = Settings.Default.Ai1Multi;
             knvAnalogInputControl1.Offset = Settings.Default.Ai1Offset;
             knvAnalogInputControl1.Unit = Settings.Default.Ai1Unit;
+            knvAnalogInputControl1.Samples = Settings.Default.Ai1Samples;
 
             knvAnalogInputControl2.Title = Settings.Default.Ai2Title;
             knvAnalogInputControl2.Multiplier = Settings.Default.Ai2Multi;
             knvAnalogInputControl2.Offset = Settings.Default.Ai2Offset;
             knvAnalogInputControl2.Unit = Settings.Default.Ai2Unit;
+            knvAnalogInputControl2.Samples = Settings.Default.Ai2Samples;
 
             knvAnalogInputControl3.Title = Settings.Default.Ai3Title;
             knvAnalogInputControl3.Multiplier = Settings.Default.Ai3Multi;
             knvAnalogInputControl3.Offset = Settings.Default.Ai3Offset;
             knvAnalogInputControl3.Unit = Settings.Default.Ai3Unit;
+            knvAnalogInputControl3.Samples = Settings.Default.Ai3Samples;
 
             knvAnalogInputControl4.Title = Settings.Default.Ai4Title;
             knvAnalogInputControl4.Multiplier = Settings.Default.Ai4Multi;
             knvAnalogInputControl4.Offset = Settings.Default.Ai4Offset;
             knvAnalogInputControl4.Unit = Settings.Default.Ai4Unit;
+            knvAnalogInputControl4.Samples = Settings.Default.Ai4Samples;
 
             knvAnalogOutputControl1.Title = Settings.Default.Ao1Title;
             knvAnalogOutputControl1.Multiplier = Settings.Default.Ao1Multi;
@@ -144,21 +148,25 @@
             Settings.Default.Ai1Multi = knvAnalogInputControl1.Multiplier;
             Settings.Default.Ai1Offset = knvAnalogInputControl1.Offset;
             Settings.Default.Ai1Unit = knvAnalogInputControl1.Unit;
+            Settings.Default.Ai1Samples = knvAnalogInputControl1.Samples;
 
             Settings.Default.Ai2Title = knvAnalogInputControl2.Title;
             Settings.Default.Ai2Multi = knvAnalogInputControl2.Multiplier;
             Settings.Default.Ai2Offset = knvAnalogInputControl2.Offset;
             Settings.Default.Ai2Unit = knvAnalogInputControl2.Unit;
+            Settings.Default.Ai2Samples = knvAnalogInputControl2.Samples;
 
             Settings.Default.Ai3Title = knvAnalogInputControl3.Title;
             Settings.Default.Ai3Multi = knvAnalogInputControl3.Multiplier;
             Settings.Default.Ai3Offset = knvAnalogInputControl3.Offset;
             Settings.Default.Ai3Unit = knvAnalogInputControl3.Unit;
+            Settings.Default.Ai3Samples = knvAnalogInputControl3.Samples;
 
             Settings.Default.Ai4Title = knvAnalogInputControl4.Title;
             Settings.Default.Ai4Multi = knvAnalogInputControl4.Multiplier;
             Settings.Default.Ai4Offset = knvAnalogInputControl4.Offset;
             Settings.Default.Ai4Unit = knvAnalogInputControl4.Unit;
+            Settings.Default.Ai4Samples = knvAnalogInputControl4.Samples;
 
             Settings.Default.Ao1Title = knvAnalogOutputControl1.Title;
             Settings.Default.Ao1Multi = knvAnalogOutputControl1.Multiplier;

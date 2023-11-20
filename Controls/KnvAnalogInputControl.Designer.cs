@@ -44,11 +44,14 @@
             this.label3 = new System.Windows.Forms.Label();
             this.textBoxMulti = new System.Windows.Forms.TextBox();
             this.label8 = new System.Windows.Forms.Label();
+            this.label4 = new System.Windows.Forms.Label();
+            this.numericUpDownSamples = new System.Windows.Forms.NumericUpDown();
             this.tableLayoutPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.knvMovingChart1)).BeginInit();
             this.panel1.SuspendLayout();
             this.tableLayoutPanel2.SuspendLayout();
             this.panel2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownSamples)).BeginInit();
             this.SuspendLayout();
             // 
             // tableLayoutPanel1
@@ -78,7 +81,6 @@
             this.knvMovingChart1.TabIndex = 0;
             this.knvMovingChart1.Text = "knvMovingChart1";
             this.knvMovingChart1.VerticalMaximum = 10D;
-            this.knvMovingChart1.VisibleSamples = 10D;
             // 
             // panel1
             // 
@@ -121,6 +123,8 @@
             // 
             // panel2
             // 
+            this.panel2.Controls.Add(this.numericUpDownSamples);
+            this.panel2.Controls.Add(this.label4);
             this.panel2.Controls.Add(this.textBoxUnit);
             this.panel2.Controls.Add(this.label2);
             this.panel2.Controls.Add(this.textBoxTitle);
@@ -176,7 +180,7 @@
             // textBoxRawValue
             // 
             this.textBoxRawValue.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.textBoxRawValue.Location = new System.Drawing.Point(542, 2);
+            this.textBoxRawValue.Location = new System.Drawing.Point(512, 2);
             this.textBoxRawValue.Name = "textBoxRawValue";
             this.textBoxRawValue.ReadOnly = true;
             this.textBoxRawValue.Size = new System.Drawing.Size(59, 20);
@@ -209,11 +213,11 @@
             this.label3.TabIndex = 34;
             this.label3.Text = "Offset:";
             // 
-            // textBoxMultipler
+            // textBoxMulti
             // 
             this.textBoxMulti.ImeMode = System.Windows.Forms.ImeMode.NoControl;
             this.textBoxMulti.Location = new System.Drawing.Point(195, 2);
-            this.textBoxMulti.Name = "textBoxMultipler";
+            this.textBoxMulti.Name = "textBoxMulti";
             this.textBoxMulti.Size = new System.Drawing.Size(60, 20);
             this.textBoxMulti.TabIndex = 35;
             this.textBoxMulti.TextChanged += new System.EventHandler(this.textBoxMultipler_TextChanged);
@@ -226,6 +230,28 @@
             this.label8.Size = new System.Drawing.Size(51, 13);
             this.label8.TabIndex = 36;
             this.label8.Text = "Multiplier:";
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(581, 6);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(50, 13);
+            this.label4.TabIndex = 41;
+            this.label4.Text = "Samples:";
+            // 
+            // numericUpDownSamples
+            // 
+            this.numericUpDownSamples.Location = new System.Drawing.Point(633, 2);
+            this.numericUpDownSamples.Name = "numericUpDownSamples";
+            this.numericUpDownSamples.Size = new System.Drawing.Size(70, 20);
+            this.numericUpDownSamples.TabIndex = 42;
+            this.numericUpDownSamples.Value = new decimal(new int[] {
+            10,
+            0,
+            0,
+            0});
+            this.numericUpDownSamples.ValueChanged += new System.EventHandler(this.numericUpDownSamples_ValueChanged);
             // 
             // KnvAnalogInputControl
             // 
@@ -242,6 +268,7 @@
             this.tableLayoutPanel2.ResumeLayout(false);
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownSamples)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -264,5 +291,7 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.TextBox textBoxUnit;
         private System.Windows.Forms.TextBox textBoxCustomValue;
+        private System.Windows.Forms.NumericUpDown numericUpDownSamples;
+        private System.Windows.Forms.Label label4;
     }
 }

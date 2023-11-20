@@ -370,5 +370,53 @@ namespace Knv.DAQ.Properties {
                 this["WindowLocation"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("10")]
+        public int Ai1Samples {
+            get {
+                return ((int)(this["Ai1Samples"]));
+            }
+            set {
+                this["Ai1Samples"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("10")]
+        public int Ai2Samples {
+            get {
+                return ((int)(this["Ai2Samples"]));
+            }
+            set {
+                this["Ai2Samples"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("10")]
+        public int Ai3Samples {
+            get {
+                return ((int)(this["Ai3Samples"]));
+            }
+            set {
+                this["Ai3Samples"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("10")]
+        public int Ai4Samples {
+            get {
+                return ((int)(this["Ai4Samples"]));
+            }
+            set {
+                this["Ai4Samples"] = value;
+            }
+        }
     }
 }

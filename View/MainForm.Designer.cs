@@ -134,6 +134,7 @@
             this.knvAnalogInputControl1.Multiplier = double.NaN;
             this.knvAnalogInputControl1.Name = "knvAnalogInputControl1";
             this.knvAnalogInputControl1.Offset = double.NaN;
+            this.knvAnalogInputControl1.Samples = 0;
             this.knvAnalogInputControl1.Size = new System.Drawing.Size(681, 171);
             this.knvAnalogInputControl1.TabIndex = 0;
             this.knvAnalogInputControl1.Title = "Analog Input";
@@ -147,6 +148,7 @@
             this.knvAnalogInputControl2.Multiplier = double.NaN;
             this.knvAnalogInputControl2.Name = "knvAnalogInputControl2";
             this.knvAnalogInputControl2.Offset = double.NaN;
+            this.knvAnalogInputControl2.Samples = 0;
             this.knvAnalogInputControl2.Size = new System.Drawing.Size(681, 171);
             this.knvAnalogInputControl2.TabIndex = 1;
             this.knvAnalogInputControl2.Title = "Analog Input";
@@ -160,6 +162,7 @@
             this.knvAnalogInputControl3.Multiplier = double.NaN;
             this.knvAnalogInputControl3.Name = "knvAnalogInputControl3";
             this.knvAnalogInputControl3.Offset = double.NaN;
+            this.knvAnalogInputControl3.Samples = 0;
             this.knvAnalogInputControl3.Size = new System.Drawing.Size(681, 171);
             this.knvAnalogInputControl3.TabIndex = 2;
             this.knvAnalogInputControl3.Title = "Analog Input";
@@ -173,6 +176,7 @@
             this.knvAnalogInputControl4.Multiplier = double.NaN;
             this.knvAnalogInputControl4.Name = "knvAnalogInputControl4";
             this.knvAnalogInputControl4.Offset = double.NaN;
+            this.knvAnalogInputControl4.Samples = 0;
             this.knvAnalogInputControl4.Size = new System.Drawing.Size(681, 171);
             this.knvAnalogInputControl4.TabIndex = 3;
             this.knvAnalogInputControl4.Title = "Analog Input";
