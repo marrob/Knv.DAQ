@@ -6,6 +6,7 @@ namespace Knv.DAQ
     using System.Collections.Generic;
     using System.IO.Ports;
     using System.Linq;
+    using System.Runtime.InteropServices;
     using System.Threading.Tasks;
     using System.Windows.Forms;
     using Events;
@@ -35,6 +36,7 @@ namespace Knv.DAQ
                 _mainForm = new MainForm();
                 _mainForm.Text = AppConstants.SoftwareTitle;
                 _mainForm.Shown += MainForm_Shown;
+                _mainForm.FormClosed += MainForm_FormClosed;
 
                 DaqIo.Instance.TracingEnable = true;
 
@@ -53,14 +55,7 @@ namespace Knv.DAQ
                     for (int i = 0; DaqIo.Instance.TraceQueue.Count != 0; i++)
                     {
                         string str = DaqIo.Instance.TraceQueue.Dequeue();
-                        if (str.Contains("Rx:"))
-                            _mainForm.RichTextBoxTrace.AppendText(str + "\r\n", System.Drawing.Color.DarkGreen, false);
-                        else if (str.Contains("Tx:"))
-                            _mainForm.RichTextBoxTrace.AppendText(str + "\r\n", System.Drawing.Color.Blue);
-                        else if (str.ToUpper().Contains("ERROR"))
-                            _mainForm.RichTextBoxTrace.AppendText(str + "\r\n", System.Drawing.Color.Red);
-                        else
-                            _mainForm.RichTextBoxTrace.AppendText(str + "\r\n", System.Drawing.Color.Black);
+                        _mainForm.Tracing.AppendText(str);
                     }
                 };
 
@@ -72,7 +67,7 @@ namespace Knv.DAQ
                     new Commands.ComPortSelectCommand(),
                     new Commands.ConnectCommand(),
                     new Commands.HowIsWorkingCommand(),
-                    new Commands.TraceingEnableCommand(),
+                    new Commands.TraceingEnableCommand(_mainForm),
                 };
                 #endregion
 
@@ -91,6 +86,11 @@ namespace Knv.DAQ
                 
                 /*** Run ***/
                 Application.Run((MainForm)_mainForm);
+            }
+
+            private void MainForm_FormClosed(object sender, FormClosedEventArgs e)
+            {
+                Settings.Default.Save();
             }
 
             private void MainForm_Shown(object sender, EventArgs e)

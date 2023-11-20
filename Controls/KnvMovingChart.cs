@@ -8,7 +8,16 @@ namespace Knv.DAQ.Controls
     public class KnvMovingChart : Chart
     {
 
-        public double VisibleSamples { get; set; } = 10;
+        [Category("KNV")]
+        [DefaultValue(10)]
+        public double VisibleSamples 
+        {
+            get { return ChartAreas[0].AxisX.Maximum; }
+            set { ChartAreas[0].AxisX.Maximum = value; }
+        }
+
+        [Category("KNV")]
+        [DefaultValue(10)]
         public double VerticalMaximum { 
             get 
             { 

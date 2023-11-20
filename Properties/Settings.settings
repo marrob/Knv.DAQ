@@ -11,14 +11,83 @@
     <Setting Name="SamplePerSec" Type="System.Int32" Scope="User">
       <Value Profile="(Default)">1</Value>
     </Setting>
-    <Setting Name="AI1Title" Type="System.String" Scope="User">
-      <Value Profile="(Default)">AI1</Value>
+    <Setting Name="Ai1Title" Type="System.String" Scope="User">
+      <Value Profile="(Default)">Analog Input 1</Value>
     </Setting>
-    <Setting Name="AI1Multiplier" Type="System.Double" Scope="User">
+    <Setting Name="Ai1Multi" Type="System.Double" Scope="User">
       <Value Profile="(Default)">1</Value>
     </Setting>
-    <Setting Name="AI1Offset" Type="System.Double" Scope="User">
+    <Setting Name="Ai1Offset" Type="System.Double" Scope="User">
       <Value Profile="(Default)">0</Value>
+    </Setting>
+    <Setting Name="Ai1Unit" Type="System.String" Scope="User">
+      <Value Profile="(Default)">V</Value>
+    </Setting>
+    <Setting Name="Ai2Title" Type="System.String" Scope="User">
+      <Value Profile="(Default)">Analog Input 2</Value>
+    </Setting>
+    <Setting Name="Ai2Multi" Type="System.Double" Scope="User">
+      <Value Profile="(Default)">1</Value>
+    </Setting>
+    <Setting Name="Ai2Offset" Type="System.Double" Scope="User">
+      <Value Profile="(Default)">0</Value>
+    </Setting>
+    <Setting Name="Ai2Unit" Type="System.String" Scope="User">
+      <Value Profile="(Default)">V</Value>
+    </Setting>
+    <Setting Name="Ai3Title" Type="System.String" Scope="User">
+      <Value Profile="(Default)">Analog Input 3</Value>
+    </Setting>
+    <Setting Name="Ai3Multi" Type="System.Double" Scope="User">
+      <Value Profile="(Default)">1</Value>
+    </Setting>
+    <Setting Name="Ai3Offset" Type="System.Double" Scope="User">
+      <Value Profile="(Default)">0</Value>
+    </Setting>
+    <Setting Name="Ai3Unit" Type="System.String" Scope="User">
+      <Value Profile="(Default)">V</Value>
+    </Setting>
+    <Setting Name="Ai4Title" Type="System.String" Scope="User">
+      <Value Profile="(Default)">Analog Input 4</Value>
+    </Setting>
+    <Setting Name="Ai4Multi" Type="System.Double" Scope="User">
+      <Value Profile="(Default)">1</Value>
+    </Setting>
+    <Setting Name="Ai4Offset" Type="System.Double" Scope="User">
+      <Value Profile="(Default)">0</Value>
+    </Setting>
+    <Setting Name="Ai4Unit" Type="System.String" Scope="User">
+      <Value Profile="(Default)">V</Value>
+    </Setting>
+    <Setting Name="Ao1Title" Type="System.String" Scope="User">
+      <Value Profile="(Default)">Analog Output 1</Value>
+    </Setting>
+    <Setting Name="Ao1Multi" Type="System.Double" Scope="User">
+      <Value Profile="(Default)">1</Value>
+    </Setting>
+    <Setting Name="Ao1Offset" Type="System.Double" Scope="User">
+      <Value Profile="(Default)">0</Value>
+    </Setting>
+    <Setting Name="Ao1Unit" Type="System.String" Scope="User">
+      <Value Profile="(Default)">V</Value>
+    </Setting>
+    <Setting Name="Ao2Title" Type="System.String" Scope="User">
+      <Value Profile="(Default)">Analog Output2</Value>
+    </Setting>
+    <Setting Name="Ao2Multi" Type="System.Double" Scope="User">
+      <Value Profile="(Default)">1</Value>
+    </Setting>
+    <Setting Name="Ao2Offset" Type="System.Double" Scope="User">
+      <Value Profile="(Default)">0</Value>
+    </Setting>
+    <Setting Name="Ao2Unit" Type="System.String" Scope="User">
+      <Value Profile="(Default)">V</Value>
+    </Setting>
+    <Setting Name="WindowSize" Type="System.Drawing.Size" Scope="User">
+      <Value Profile="(Default)">1020, 894</Value>
+    </Setting>
+    <Setting Name="WindowLocation" Type="System.Drawing.Point" Scope="User">
+      <Value Profile="(Default)">0, 0</Value>
     </Setting>
   </Settings>
 </SettingsFile>

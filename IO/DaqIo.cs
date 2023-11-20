@@ -311,7 +311,7 @@ namespace Knv.DAQ
                 return resp;
         }
 
-        public double AO1
+        public double Ao1
         {
             get
             {
@@ -331,7 +331,7 @@ namespace Knv.DAQ
             }
         }
 
-        public double AO2
+        public double Ao2
         {
             get
             {
@@ -350,7 +350,7 @@ namespace Knv.DAQ
             }
         }
 
-        public double AI1
+        public double Ai1
         {
             get 
             {
@@ -361,7 +361,7 @@ namespace Knv.DAQ
             }
         }
 
-        public double AI2
+        public double Ai2
         {
             get
             {
@@ -372,7 +372,7 @@ namespace Knv.DAQ
             }
         }
 
-        public double AI3
+        public double Ai3
         {
             get
             {
@@ -383,7 +383,7 @@ namespace Knv.DAQ
             }
         }
 
-        public double AI4
+        public double Ai4
         {
             get
             {

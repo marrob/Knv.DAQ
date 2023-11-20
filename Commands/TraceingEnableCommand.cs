@@ -11,12 +11,15 @@ namespace Knv.DAQ.Commands
 
     class TraceingEnableCommand : ToolStripMenuItem
     {
-        public TraceingEnableCommand()
+       
+        readonly IMainForm _mainForm;
+        public TraceingEnableCommand(IMainForm mainForm)
         {
             Text = "Tracing";
             ShortcutKeys = Keys.F7;
             DisplayStyle = ToolStripItemDisplayStyle.ImageAndText;
             Enabled = true;
+            _mainForm = mainForm;
 
             EventAggregator.Instance.Subscribe((Action<ShowAppEvent>)(e =>
             {
@@ -27,11 +30,13 @@ namespace Knv.DAQ.Commands
                 {
                     BackColor = Color.Orange;
                     Text = $"Tracing Enabled";
+                    _mainForm.TracingVisible = true;
                 }
                 else
                 {
                     BackColor = SystemColors.Control;
                     Text = $"Tracing";
+                    _mainForm.TracingVisible = false;
                 }
             }));
 
@@ -48,11 +53,13 @@ namespace Knv.DAQ.Commands
             {
                 BackColor = Color.Orange;
                 Text = $"Tracing Enabled";
+                _mainForm.TracingVisible = true;
             }
             else
             {
                 BackColor = SystemColors.Control;
                 Text = $"Tracing";
+                _mainForm.TracingVisible = false;
             }
         }
     }
