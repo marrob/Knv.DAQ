@@ -40,6 +40,8 @@ namespace Knv.DAQ
 
                 DaqIo.Instance.TracingEnable = true;
 
+                _mainForm.TracingVisible = true;
+
                 _timer = new Timer();
                 _timer.Interval = 250;
                 _timer.Start();

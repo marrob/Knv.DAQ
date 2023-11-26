@@ -30,13 +30,13 @@ namespace Knv.DAQ.Commands
                 {
                     BackColor = Color.Orange;
                     Text = $"Tracing Enabled";
-                    _mainForm.TracingVisible = true;
+                  //  _mainForm.TracingVisible = true;
                 }
                 else
                 {
                     BackColor = SystemColors.Control;
                     Text = $"Tracing";
-                    _mainForm.TracingVisible = false;
+                  //  _mainForm.TracingVisible = false;
                 }
             }));
 
@@ -53,13 +53,13 @@ namespace Knv.DAQ.Commands
             {
                 BackColor = Color.Orange;
                 Text = $"Tracing Enabled";
-                _mainForm.TracingVisible = true;
+              //  _mainForm.TracingVisible = true;
             }
             else
             {
                 BackColor = SystemColors.Control;
                 Text = $"Tracing";
-                _mainForm.TracingVisible = false;
+                //_mainForm.TracingVisible = false;
             }
         }
     }

@@ -3,13 +3,8 @@ namespace Knv.DAQ
 {
     using System;
     using System.Collections.Generic;
-    using System.Linq;
-    using System.Text;
-    using System.Threading.Tasks;
     using System.IO.Ports;
     using System.Globalization;
-    using System.ComponentModel;
-    using System.Drawing.Drawing2D;
 
     public class DaqIo
     {
@@ -58,7 +53,8 @@ namespace Knv.DAQ
                 {
                     ReadTimeout = 1000,
                     BaudRate = 115200,
-                    NewLine = "\n"
+                    DtrEnable = true, //RPi pico support
+                    NewLine = "\r"
                 };
                 _sp.Open();
                 _sp.DiscardInBuffer();
@@ -311,21 +307,27 @@ namespace Knv.DAQ
                 return resp;
         }
 
+        const double STM32_VREF = 3.3;      
+        const int STM32_ADC_MAX = 4096;
+        const double STM32_LSB = STM32_VREF / STM32_ADC_MAX;
+        const double AO_MUL = 3.0303;
+        const double AI_DIV = 3.06;
+
         public double Ao1
         {
             get
             {
                 int adc = int.Parse(WriteRead("AO1?"), NumberStyles.AllowHexSpecifier, CultureInfo.GetCultureInfo("en-US"));
-                double value = (3.3 / 4095.0) * adc * 3;
+                double value = STM32_LSB * adc * AO_MUL;
                 double rounded = Math.Round(value, 2);
                 return rounded;
             }
             set 
             {
-                double divVolts = value / 3;
-                int adc = (int)(divVolts / (3.3 / 4095.0));
-                if (adc >= 4095)
-                    adc = 4095;
+                double divVolts = value / AO_MUL;
+                int adc = (int)(divVolts / STM32_LSB);
+                if (adc > STM32_ADC_MAX - 1)
+                    adc = STM32_ADC_MAX - 1;
                 WriteRead($"AO1 {adc:X2}");
 
             }
@@ -336,16 +338,16 @@ namespace Knv.DAQ
             get
             {
                 int adc = int.Parse(WriteRead("AO2?"), NumberStyles.AllowHexSpecifier, CultureInfo.GetCultureInfo("en-US"));
-                double value = (3.3 / 4095.0) * adc * 3;
+                double value = STM32_LSB * adc * AO_MUL;
                 double rounded = Math.Round(value, 2);
                 return rounded;
             }
             set
             {
-                double divVolts = value / 3;
-                int adc = (int)(divVolts / (3.3 / 4095.0));
-                if (adc >= 4095)
-                    adc = 4095;
+                double divVolts = value / AO_MUL;
+                int adc = (int)(divVolts / STM32_LSB);
+                if (adc > STM32_ADC_MAX - 1)
+                    adc = STM32_ADC_MAX - 1;
                 WriteRead($"AO2 {adc:X2}");
             }
         }
@@ -355,7 +357,7 @@ namespace Knv.DAQ
             get 
             {
                 int adc =  int.Parse(WriteRead("AI1?"), NumberStyles.AllowHexSpecifier, CultureInfo.GetCultureInfo("en-US"));
-                double value = (3.3/ 4095.0) * adc * 3.06;
+                double value = STM32_LSB * adc * AI_DIV;
                 double rounded = Math.Round(value, 2);
                 return rounded;
             }
@@ -366,7 +368,7 @@ namespace Knv.DAQ
             get
             {
                 int adc = int.Parse(WriteRead("AI2?"), NumberStyles.AllowHexSpecifier, CultureInfo.GetCultureInfo("en-US"));
-                double value = (3.3 / 4095.0) * adc * 3.06;
+                double value = STM32_LSB * adc * AI_DIV;
                 double rounded = Math.Round(value, 2);
                 return rounded;
             }
@@ -377,7 +379,7 @@ namespace Knv.DAQ
             get
             {
                 int adc = int.Parse(WriteRead("AI3?"), NumberStyles.AllowHexSpecifier, CultureInfo.GetCultureInfo("en-US"));
-                double value = (3.3 / 4095.0) * adc * 3.06;
+                double value = STM32_LSB * adc * AI_DIV;
                 double rounded = Math.Round(value, 2);
                 return rounded;
             }
@@ -388,7 +390,7 @@ namespace Knv.DAQ
             get
             {
                 int adc = int.Parse(WriteRead("AI4?"), NumberStyles.AllowHexSpecifier, CultureInfo.GetCultureInfo("en-US"));
-                double value = (3.3 / 4095.0) * adc * 3.06;
+                double value = STM32_LSB * adc * AI_DIV;
                 double rounded = Math.Round(value, 2);
                 return rounded;
             }

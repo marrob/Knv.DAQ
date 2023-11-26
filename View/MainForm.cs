@@ -66,9 +66,8 @@
 
             EventAggregator.Instance.Subscribe((Action<ConnectionChangedAppEvent>)(e =>
             {
-                Enabled = e.IsOpen;
+                splitContainer1.Panel1.Enabled = e.IsOpen;
             }));
-
 
             timerSampling.Start();
         }
