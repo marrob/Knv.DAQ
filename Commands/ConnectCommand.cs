@@ -7,6 +7,7 @@ namespace Knv.DAQ.Commands
     using Properties;
     using Events;
     using System.Drawing;
+    using IO;
 
     class ConnectCommand : ToolStripMenuItem
     {

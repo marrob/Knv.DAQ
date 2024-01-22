@@ -5,6 +5,7 @@ namespace Knv.DAQ.StatusBar
     using System;
     using System.Windows.Forms;
     using Properties;
+    using IO;
 
     class UpTime : ToolStripStatusLabel
     { 
@@ -24,7 +25,7 @@ namespace Knv.DAQ.StatusBar
                 {
                     try
                     {
-                        Text = "UpTime Counter: " + DaqIo.Instance.GetUpTime();
+                       // Text = "UpTime Counter: " + DaqIo.Instance.GetUpTime();
                     }
                     catch (Exception ex) 
                     {

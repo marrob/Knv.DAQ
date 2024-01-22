@@ -1,17 +1,12 @@
-﻿
-
-namespace Knv.DAQ
+﻿namespace Knv.DAQ
 {
     using System;
-    using System.Collections.Generic;
     using System.IO.Ports;
     using System.Linq;
-    using System.Runtime.InteropServices;
-    using System.Threading.Tasks;
     using System.Windows.Forms;
     using Events;
-    using Knv.DAQ.Controls;
     using Knv.DAQ.Properties;
+    using IO;
 
     internal static class Program
     {
@@ -28,7 +23,7 @@ namespace Knv.DAQ
         class App
         {
             readonly IMainForm _mainForm;
-            Timer _timer;
+            readonly Timer _timer;
 
             public App()
             {

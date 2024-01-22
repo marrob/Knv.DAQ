@@ -1,11 +1,10 @@
 ﻿
-namespace Knv.DAQ
+namespace Knv.DAQ.IO
 {
     using System;
     using System.Collections.Generic;
     using System.IO.Ports;
     using System.Globalization;
-
     public class DaqIo
     {
         public static DaqIo Instance { get; } = new DaqIo();
@@ -18,6 +17,10 @@ namespace Knv.DAQ
         public int TraceLines { get; private set; }
 
         SerialPort _sp;
+
+        public AnalogOutput Ao1 { get; private set; }
+        public AnalogOutput Ao2 { get; private set; }
+
         public bool IsOpen
         {
             get
@@ -33,6 +36,13 @@ namespace Knv.DAQ
         {
             get { return _sp.ReadTimeout; }
             set { _sp.ReadTimeout = value; }
+        }
+
+        public DaqIo()
+        {
+            Ao1 = new AnalogOutput(1, WriteRead);
+            Ao2 = new AnalogOutput(2, WriteRead);
+
         }
 
         public static string[] GetPortNames()
@@ -313,44 +323,8 @@ namespace Knv.DAQ
         const double AO_MUL = 3.0303;
         const double AI_DIV = 3.06;
 
-        public double Ao1
-        {
-            get
-            {
-                int adc = int.Parse(WriteRead("AO1?"), NumberStyles.AllowHexSpecifier, CultureInfo.GetCultureInfo("en-US"));
-                double value = STM32_LSB * adc * AO_MUL;
-                double rounded = Math.Round(value, 2);
-                return rounded;
-            }
-            set 
-            {
-                double divVolts = value / AO_MUL;
-                int adc = (int)(divVolts / STM32_LSB);
-                if (adc > STM32_ADC_MAX - 1)
-                    adc = STM32_ADC_MAX - 1;
-                WriteRead($"AO1 {adc:X2}");
 
-            }
-        }
 
-        public double Ao2
-        {
-            get
-            {
-                int adc = int.Parse(WriteRead("AO2?"), NumberStyles.AllowHexSpecifier, CultureInfo.GetCultureInfo("en-US"));
-                double value = STM32_LSB * adc * AO_MUL;
-                double rounded = Math.Round(value, 2);
-                return rounded;
-            }
-            set
-            {
-                double divVolts = value / AO_MUL;
-                int adc = (int)(divVolts / STM32_LSB);
-                if (adc > STM32_ADC_MAX - 1)
-                    adc = STM32_ADC_MAX - 1;
-                WriteRead($"AO2 {adc:X2}");
-            }
-        }
 
         public double Ai1
         {

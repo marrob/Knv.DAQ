@@ -4,6 +4,7 @@
     using System.Windows.Forms;
     using Properties;
     using Events;
+    using IO;
 
     class FwVersion : ToolStripStatusLabel
     { 

@@ -40,6 +40,7 @@
             this.knvAnalogInputControl3 = new Knv.DAQ.Controls.KnvAnalogInputControl();
             this.knvAnalogInputControl4 = new Knv.DAQ.Controls.KnvAnalogInputControl();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.button1 = new System.Windows.Forms.Button();
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
             this.tableLayoutPanel3 = new System.Windows.Forms.TableLayoutPanel();
             this.knvAnalogOutputControl1 = new Knv.DAQ.Controls.KnvAnalogOutputControl();
@@ -66,7 +67,7 @@
             // 
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(1004, 24);
+            this.menuStrip1.Size = new System.Drawing.Size(1545, 24);
             this.menuStrip1.TabIndex = 0;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -74,7 +75,7 @@
             // 
             this.statusStrip1.Location = new System.Drawing.Point(0, 833);
             this.statusStrip1.Name = "statusStrip1";
-            this.statusStrip1.Size = new System.Drawing.Size(1004, 22);
+            this.statusStrip1.Size = new System.Drawing.Size(1545, 22);
             this.statusStrip1.TabIndex = 1;
             this.statusStrip1.Text = "statusStrip1";
             // 
@@ -92,14 +93,14 @@
             // splitContainer1.Panel2
             // 
             this.splitContainer1.Panel2.Controls.Add(this.knvTracingControl1);
-            this.splitContainer1.Size = new System.Drawing.Size(1004, 809);
+            this.splitContainer1.Size = new System.Drawing.Size(1545, 809);
             this.splitContainer1.SplitterDistance = 597;
             this.splitContainer1.TabIndex = 2;
             // 
             // tableLayoutPanel1
             // 
             this.tableLayoutPanel1.ColumnCount = 2;
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 294F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 520F));
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tableLayoutPanel1.Controls.Add(this.knvStackPanel1, 1, 0);
             this.tableLayoutPanel1.Controls.Add(this.panel1, 0, 0);
@@ -109,7 +110,7 @@
             this.tableLayoutPanel1.RowCount = 1;
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 597F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(1004, 597);
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(1545, 597);
             this.tableLayoutPanel1.TabIndex = 0;
             // 
             // knvStackPanel1
@@ -121,9 +122,9 @@
             this.knvStackPanel1.Controls.Add(this.knvAnalogInputControl4);
             this.knvStackPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.knvStackPanel1.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
-            this.knvStackPanel1.Location = new System.Drawing.Point(297, 3);
+            this.knvStackPanel1.Location = new System.Drawing.Point(523, 3);
             this.knvStackPanel1.Name = "knvStackPanel1";
-            this.knvStackPanel1.Size = new System.Drawing.Size(704, 591);
+            this.knvStackPanel1.Size = new System.Drawing.Size(1019, 591);
             this.knvStackPanel1.TabIndex = 0;
             // 
             // knvAnalogInputControl1
@@ -135,7 +136,7 @@
             this.knvAnalogInputControl1.Name = "knvAnalogInputControl1";
             this.knvAnalogInputControl1.Offset = double.NaN;
             this.knvAnalogInputControl1.Samples = 0;
-            this.knvAnalogInputControl1.Size = new System.Drawing.Size(681, 171);
+            this.knvAnalogInputControl1.Size = new System.Drawing.Size(996, 171);
             this.knvAnalogInputControl1.TabIndex = 0;
             this.knvAnalogInputControl1.Title = "Analog Input";
             this.knvAnalogInputControl1.Unit = "V";
@@ -149,7 +150,7 @@
             this.knvAnalogInputControl2.Name = "knvAnalogInputControl2";
             this.knvAnalogInputControl2.Offset = double.NaN;
             this.knvAnalogInputControl2.Samples = 0;
-            this.knvAnalogInputControl2.Size = new System.Drawing.Size(681, 171);
+            this.knvAnalogInputControl2.Size = new System.Drawing.Size(996, 171);
             this.knvAnalogInputControl2.TabIndex = 1;
             this.knvAnalogInputControl2.Title = "Analog Input";
             this.knvAnalogInputControl2.Unit = "V";
@@ -163,7 +164,7 @@
             this.knvAnalogInputControl3.Name = "knvAnalogInputControl3";
             this.knvAnalogInputControl3.Offset = double.NaN;
             this.knvAnalogInputControl3.Samples = 0;
-            this.knvAnalogInputControl3.Size = new System.Drawing.Size(681, 171);
+            this.knvAnalogInputControl3.Size = new System.Drawing.Size(996, 171);
             this.knvAnalogInputControl3.TabIndex = 2;
             this.knvAnalogInputControl3.Title = "Analog Input";
             this.knvAnalogInputControl3.Unit = "V";
@@ -177,19 +178,29 @@
             this.knvAnalogInputControl4.Name = "knvAnalogInputControl4";
             this.knvAnalogInputControl4.Offset = double.NaN;
             this.knvAnalogInputControl4.Samples = 0;
-            this.knvAnalogInputControl4.Size = new System.Drawing.Size(681, 171);
+            this.knvAnalogInputControl4.Size = new System.Drawing.Size(996, 171);
             this.knvAnalogInputControl4.TabIndex = 3;
             this.knvAnalogInputControl4.Title = "Analog Input";
             this.knvAnalogInputControl4.Unit = "V";
             // 
             // panel1
             // 
+            this.panel1.Controls.Add(this.button1);
             this.panel1.Controls.Add(this.tableLayoutPanel2);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel1.Location = new System.Drawing.Point(3, 3);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(288, 591);
+            this.panel1.Size = new System.Drawing.Size(514, 591);
             this.panel1.TabIndex = 1;
+            // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(239, 504);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(75, 23);
+            this.button1.TabIndex = 1;
+            this.button1.Text = "button1";
+            this.button1.UseVisualStyleBackColor = true;
             // 
             // tableLayoutPanel2
             // 
@@ -197,58 +208,73 @@
             this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tableLayoutPanel2.Controls.Add(this.tableLayoutPanel3, 0, 0);
             this.tableLayoutPanel2.Controls.Add(this.panel2, 0, 1);
-            this.tableLayoutPanel2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel2.Location = new System.Drawing.Point(0, 0);
             this.tableLayoutPanel2.Name = "tableLayoutPanel2";
             this.tableLayoutPanel2.RowCount = 2;
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 48F));
-            this.tableLayoutPanel2.Size = new System.Drawing.Size(288, 591);
+            this.tableLayoutPanel2.Size = new System.Drawing.Size(464, 441);
             this.tableLayoutPanel2.TabIndex = 0;
             // 
             // tableLayoutPanel3
             // 
-            this.tableLayoutPanel3.ColumnCount = 2;
-            this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel3.ColumnCount = 1;
+            this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.tableLayoutPanel3.Controls.Add(this.knvAnalogOutputControl1, 0, 0);
-            this.tableLayoutPanel3.Controls.Add(this.knvAnalogOutputControl2, 1, 0);
+            this.tableLayoutPanel3.Controls.Add(this.knvAnalogOutputControl2, 0, 1);
             this.tableLayoutPanel3.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel3.Location = new System.Drawing.Point(3, 3);
             this.tableLayoutPanel3.Name = "tableLayoutPanel3";
-            this.tableLayoutPanel3.RowCount = 1;
-            this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 537F));
-            this.tableLayoutPanel3.Size = new System.Drawing.Size(282, 537);
+            this.tableLayoutPanel3.RowCount = 2;
+            this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel3.Size = new System.Drawing.Size(458, 387);
             this.tableLayoutPanel3.TabIndex = 0;
             // 
             // knvAnalogOutputControl1
             // 
+            this.knvAnalogOutputControl1.Divider = 0;
             this.knvAnalogOutputControl1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.knvAnalogOutputControl1.Location = new System.Drawing.Point(3, 3);
             this.knvAnalogOutputControl1.Multiplier = double.NaN;
             this.knvAnalogOutputControl1.Name = "knvAnalogOutputControl1";
             this.knvAnalogOutputControl1.Offset = double.NaN;
-            this.knvAnalogOutputControl1.Size = new System.Drawing.Size(135, 531);
+            this.knvAnalogOutputControl1.SamplesCount = 0;
+            this.knvAnalogOutputControl1.Size = new System.Drawing.Size(452, 187);
             this.knvAnalogOutputControl1.TabIndex = 0;
             this.knvAnalogOutputControl1.Title = "";
             this.knvAnalogOutputControl1.Unit = "V";
             this.knvAnalogOutputControl1.Value = 0D;
+            this.knvAnalogOutputControl1.WaveAmplitude = 0D;
+            this.knvAnalogOutputControl1.WaveDutyCycle = 0;
+            this.knvAnalogOutputControl1.WaveOffset = 0D;
             this.knvAnalogOutputControl1.ValueChanged += new System.EventHandler<double>(this.knvAnalogOutputControl1_ValueChanged);
+            this.knvAnalogOutputControl1.WaveChanged += new System.EventHandler<Knv.DAQ.IO.WaveForm>(this.knvAnalogOutputControl1_WaveChanged);
+            this.knvAnalogOutputControl1.Start += new System.EventHandler(this.knvAnalogOutputControl1_Start);
+            this.knvAnalogOutputControl1.Stop += new System.EventHandler(this.knvAnalogOutputControl1_Stop);
             // 
             // knvAnalogOutputControl2
             // 
+            this.knvAnalogOutputControl2.Divider = 0;
             this.knvAnalogOutputControl2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.knvAnalogOutputControl2.Location = new System.Drawing.Point(144, 3);
+            this.knvAnalogOutputControl2.Location = new System.Drawing.Point(3, 196);
             this.knvAnalogOutputControl2.Multiplier = double.NaN;
             this.knvAnalogOutputControl2.Name = "knvAnalogOutputControl2";
             this.knvAnalogOutputControl2.Offset = double.NaN;
-            this.knvAnalogOutputControl2.Size = new System.Drawing.Size(135, 531);
+            this.knvAnalogOutputControl2.SamplesCount = 0;
+            this.knvAnalogOutputControl2.Size = new System.Drawing.Size(452, 188);
             this.knvAnalogOutputControl2.TabIndex = 1;
             this.knvAnalogOutputControl2.Title = "";
             this.knvAnalogOutputControl2.Unit = "V";
             this.knvAnalogOutputControl2.Value = 0D;
+            this.knvAnalogOutputControl2.WaveAmplitude = 0D;
+            this.knvAnalogOutputControl2.WaveDutyCycle = 0;
+            this.knvAnalogOutputControl2.WaveOffset = 0D;
             this.knvAnalogOutputControl2.ValueChanged += new System.EventHandler<double>(this.knvAnalogOutputControl2_ValueChanged);
+            this.knvAnalogOutputControl2.WaveChanged += new System.EventHandler<Knv.DAQ.IO.WaveForm>(this.knvAnalogOutputControl2_WaveChanged);
+            this.knvAnalogOutputControl2.Start += new System.EventHandler(this.knvAnalogOutputControl2_Start);
+            this.knvAnalogOutputControl2.Stop += new System.EventHandler(this.knvAnalogOutputControl2_Stop);
             // 
             // panel2
             // 
@@ -256,9 +282,9 @@
             this.panel2.Controls.Add(this.numericUpDownSPS);
             this.panel2.Controls.Add(this.label1);
             this.panel2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel2.Location = new System.Drawing.Point(3, 546);
+            this.panel2.Location = new System.Drawing.Point(3, 396);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(282, 42);
+            this.panel2.Size = new System.Drawing.Size(458, 42);
             this.panel2.TabIndex = 1;
             // 
             // numericUpDownSPS
@@ -294,7 +320,7 @@
             this.knvTracingControl1.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.knvTracingControl1.Location = new System.Drawing.Point(0, 0);
             this.knvTracingControl1.Name = "knvTracingControl1";
-            this.knvTracingControl1.Size = new System.Drawing.Size(1004, 208);
+            this.knvTracingControl1.Size = new System.Drawing.Size(1545, 208);
             this.knvTracingControl1.TabIndex = 0;
             // 
             // timerSampling
@@ -306,7 +332,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1004, 855);
+            this.ClientSize = new System.Drawing.Size(1545, 855);
             this.Controls.Add(this.splitContainer1);
             this.Controls.Add(this.statusStrip1);
             this.Controls.Add(this.menuStrip1);
@@ -353,8 +379,9 @@
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel3;
         private System.Windows.Forms.NumericUpDown numericUpDownSPS;
         private System.Windows.Forms.Panel panel2;
-        private Controls.KnvAnalogOutputControl knvAnalogOutputControl1;
         private Controls.KnvAnalogOutputControl knvAnalogOutputControl2;
+        private Controls.KnvAnalogOutputControl knvAnalogOutputControl1;
+        private System.Windows.Forms.Button button1;
     }
 }
 

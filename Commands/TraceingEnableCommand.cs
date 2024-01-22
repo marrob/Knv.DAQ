@@ -6,7 +6,7 @@ namespace Knv.DAQ.Commands
     using System.Drawing;
     using Properties;
     using Events;
-
+    using IO;
 
 
     class TraceingEnableCommand : ToolStripMenuItem
