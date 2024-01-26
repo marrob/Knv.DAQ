@@ -244,5 +244,10 @@ namespace Knv.DAQ.Controls
             if(_init)
                 WaveChanged?.Invoke(this, Wave);
         }
+
+        private void textBoxTitle_TextChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }

@@ -58,6 +58,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AppConstants.cs" />
+    <Compile Include="Commands\AlwaysOnTopCommand.cs">
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="Commands\ComPortSelectCommand.cs">
       <SubType>Component</SubType>
     </Compile>
@@ -181,6 +184,12 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Elegantthemes-Softies-Meter.ico" />
+    <None Include="Resources\Top-Arrow.32.png" />
+    <None Include="Resources\Tatice-Cristal-Intense-Ok.32.png" />
+    <None Include="Resources\Stop_Normal_Red32.png" />
+    <None Include="Resources\Play_1_Normal32.png" />
+    <None Include="Resources\configure32x32.png" />
+    <None Include="Resources\box32x32.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">

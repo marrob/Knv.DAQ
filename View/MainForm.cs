@@ -13,6 +13,7 @@
         event FormClosingEventHandler FormClosing;
         event EventHandler Disposed;
 
+        bool AlwaysOnTop { get; set; }
         string Text { get; set; }
         ToolStripItem[] MenuBar { set; }
         ToolStripItem[] StatusBar { set; }
@@ -30,10 +31,13 @@
 
         public KnvTracingControl Tracing
         {
-            get
-            {
-                return knvTracingControl1;
-            }
+            get { return knvTracingControl1; }
+        }
+
+        public bool AlwaysOnTop
+        {
+            get { return this.TopMost; }
+            set { this.TopMost = value; }
         }
 
         public ToolStripItem[] StatusBar

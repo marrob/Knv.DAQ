@@ -74,19 +74,18 @@
             this.panel1.Controls.Add(this.textBoxOffset);
             this.panel1.Controls.Add(this.labelCustomValue);
             this.panel1.Controls.Add(this.label2);
-            this.panel1.Controls.Add(this.textBoxTitle);
             this.panel1.Controls.Add(this.textBoxMulti);
             this.panel1.Controls.Add(this.label1);
             this.panel1.Controls.Add(this.textBoxRaw);
             this.panel1.Location = new System.Drawing.Point(59, 3);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(107, 222);
+            this.panel1.Size = new System.Drawing.Size(107, 155);
             this.panel1.TabIndex = 0;
             // 
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(6, 122);
+            this.label4.Location = new System.Drawing.Point(6, 93);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(29, 13);
             this.label4.TabIndex = 8;
@@ -94,7 +93,7 @@
             // 
             // textBoxUnit
             // 
-            this.textBoxUnit.Location = new System.Drawing.Point(41, 118);
+            this.textBoxUnit.Location = new System.Drawing.Point(41, 89);
             this.textBoxUnit.Name = "textBoxUnit";
             this.textBoxUnit.Size = new System.Drawing.Size(63, 20);
             this.textBoxUnit.TabIndex = 7;
@@ -103,7 +102,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(2, 73);
+            this.label3.Location = new System.Drawing.Point(2, 44);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(38, 13);
             this.label3.TabIndex = 6;
@@ -111,7 +110,7 @@
             // 
             // textBoxOffset
             // 
-            this.textBoxOffset.Location = new System.Drawing.Point(41, 70);
+            this.textBoxOffset.Location = new System.Drawing.Point(41, 41);
             this.textBoxOffset.Name = "textBoxOffset";
             this.textBoxOffset.Size = new System.Drawing.Size(63, 20);
             this.textBoxOffset.TabIndex = 5;
@@ -121,7 +120,7 @@
             // labelCustomValue
             // 
             this.labelCustomValue.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelCustomValue.Location = new System.Drawing.Point(3, 26);
+            this.labelCustomValue.Location = new System.Drawing.Point(4, 6);
             this.labelCustomValue.Name = "labelCustomValue";
             this.labelCustomValue.Size = new System.Drawing.Size(102, 26);
             this.labelCustomValue.TabIndex = 4;
@@ -131,7 +130,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(3, 97);
+            this.label2.Location = new System.Drawing.Point(3, 68);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(32, 13);
             this.label2.TabIndex = 3;
@@ -139,14 +138,17 @@
             // 
             // textBoxTitle
             // 
+            this.textBoxTitle.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.textBoxTitle.Location = new System.Drawing.Point(3, 3);
             this.textBoxTitle.Name = "textBoxTitle";
-            this.textBoxTitle.Size = new System.Drawing.Size(101, 20);
+            this.textBoxTitle.Size = new System.Drawing.Size(450, 29);
             this.textBoxTitle.TabIndex = 2;
+            this.textBoxTitle.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.textBoxTitle.TextChanged += new System.EventHandler(this.textBoxTitle_TextChanged);
             // 
             // textBoxMulti
             // 
-            this.textBoxMulti.Location = new System.Drawing.Point(41, 94);
+            this.textBoxMulti.Location = new System.Drawing.Point(41, 65);
             this.textBoxMulti.Name = "textBoxMulti";
             this.textBoxMulti.Size = new System.Drawing.Size(63, 20);
             this.textBoxMulti.TabIndex = 1;
@@ -156,7 +158,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(6, 145);
+            this.label1.Location = new System.Drawing.Point(6, 116);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(32, 13);
             this.label1.TabIndex = 1;
@@ -164,7 +166,7 @@
             // 
             // textBoxRaw
             // 
-            this.textBoxRaw.Location = new System.Drawing.Point(41, 142);
+            this.textBoxRaw.Location = new System.Drawing.Point(41, 113);
             this.textBoxRaw.Name = "textBoxRaw";
             this.textBoxRaw.ReadOnly = true;
             this.textBoxRaw.Size = new System.Drawing.Size(63, 20);
@@ -177,7 +179,7 @@
             this.trackBar1.Maximum = 100;
             this.trackBar1.Name = "trackBar1";
             this.trackBar1.Orientation = System.Windows.Forms.Orientation.Vertical;
-            this.trackBar1.Size = new System.Drawing.Size(45, 216);
+            this.trackBar1.Size = new System.Drawing.Size(45, 146);
             this.trackBar1.TabIndex = 1;
             this.trackBar1.TickStyle = System.Windows.Forms.TickStyle.Both;
             this.trackBar1.Scroll += new System.EventHandler(this.trackBar1_Scroll);
@@ -196,12 +198,12 @@
             this.tableLayoutPanel2.Controls.Add(this.trackBar1, 0, 0);
             this.tableLayoutPanel2.Controls.Add(this.panel1, 1, 0);
             this.tableLayoutPanel2.Controls.Add(this.panel2, 2, 0);
-            this.tableLayoutPanel2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel2.Location = new System.Drawing.Point(0, 0);
+            this.tableLayoutPanel2.Cursor = System.Windows.Forms.Cursors.Default;
+            this.tableLayoutPanel2.Location = new System.Drawing.Point(0, 38);
             this.tableLayoutPanel2.Name = "tableLayoutPanel2";
             this.tableLayoutPanel2.RowCount = 1;
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel2.Size = new System.Drawing.Size(456, 228);
+            this.tableLayoutPanel2.Size = new System.Drawing.Size(456, 161);
             this.tableLayoutPanel2.TabIndex = 1;
             // 
             // panel2
@@ -225,13 +227,13 @@
             this.panel2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel2.Location = new System.Drawing.Point(172, 3);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(281, 222);
+            this.panel2.Size = new System.Drawing.Size(281, 155);
             this.panel2.TabIndex = 2;
             // 
             // label10
             // 
             this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(159, 162);
+            this.label10.Location = new System.Drawing.Point(147, 129);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(43, 13);
             this.label10.TabIndex = 17;
@@ -239,7 +241,7 @@
             // 
             // textBoxDivider
             // 
-            this.textBoxDivider.Location = new System.Drawing.Point(208, 159);
+            this.textBoxDivider.Location = new System.Drawing.Point(196, 126);
             this.textBoxDivider.Name = "textBoxDivider";
             this.textBoxDivider.Size = new System.Drawing.Size(63, 20);
             this.textBoxDivider.TabIndex = 16;
@@ -248,7 +250,7 @@
             // labelSamplesCount
             // 
             this.labelSamplesCount.AutoSize = true;
-            this.labelSamplesCount.Location = new System.Drawing.Point(152, 134);
+            this.labelSamplesCount.Location = new System.Drawing.Point(140, 101);
             this.labelSamplesCount.Name = "labelSamplesCount";
             this.labelSamplesCount.Size = new System.Drawing.Size(50, 13);
             this.labelSamplesCount.TabIndex = 15;
@@ -256,7 +258,7 @@
             // 
             // textBoxSamplesCount
             // 
-            this.textBoxSamplesCount.Location = new System.Drawing.Point(208, 130);
+            this.textBoxSamplesCount.Location = new System.Drawing.Point(196, 97);
             this.textBoxSamplesCount.Name = "textBoxSamplesCount";
             this.textBoxSamplesCount.Size = new System.Drawing.Size(63, 20);
             this.textBoxSamplesCount.TabIndex = 14;
@@ -265,7 +267,7 @@
             // label9
             // 
             this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(170, 104);
+            this.label9.Location = new System.Drawing.Point(158, 71);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(32, 13);
             this.label9.TabIndex = 13;
@@ -273,7 +275,7 @@
             // 
             // textBoxDutyCycle
             // 
-            this.textBoxDutyCycle.Location = new System.Drawing.Point(208, 101);
+            this.textBoxDutyCycle.Location = new System.Drawing.Point(196, 68);
             this.textBoxDutyCycle.Name = "textBoxDutyCycle";
             this.textBoxDutyCycle.Size = new System.Drawing.Size(63, 20);
             this.textBoxDutyCycle.TabIndex = 12;
@@ -375,8 +377,9 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.Controls.Add(this.tableLayoutPanel2);
+            this.Controls.Add(this.textBoxTitle);
             this.Name = "KnvAnalogOutputControl";
-            this.Size = new System.Drawing.Size(456, 228);
+            this.Size = new System.Drawing.Size(456, 201);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.trackBar1)).EndInit();
@@ -385,6 +388,7 @@
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 

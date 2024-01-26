@@ -63,8 +63,9 @@
                 {
                     new Commands.ComPortSelectCommand(),
                     new Commands.ConnectCommand(),
-                    new Commands.HowIsWorkingCommand(),
+                    new Commands.AlwaysOnTopCommand(_mainForm),
                     new Commands.TraceingEnableCommand(_mainForm),
+                    new Commands.HowIsWorkingCommand(),
                 };
                 #endregion
 

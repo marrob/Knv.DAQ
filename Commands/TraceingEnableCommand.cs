@@ -14,13 +14,13 @@ namespace Knv.DAQ.Commands
        
         readonly IMainForm _mainForm;
         public TraceingEnableCommand(IMainForm mainForm)
-        {
+        {  
+            _mainForm = mainForm;
             Text = "Tracing";
             ShortcutKeys = Keys.F7;
             DisplayStyle = ToolStripItemDisplayStyle.ImageAndText;
             Enabled = true;
-            _mainForm = mainForm;
-
+          
             EventAggregator.Instance.Subscribe((Action<ShowAppEvent>)(e =>
             {
                 DaqIo.Instance.TracingEnable = Settings.Default.TracingEnable;
