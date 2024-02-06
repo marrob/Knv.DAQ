@@ -40,6 +40,14 @@ namespace Knv.DAQ.Controls
                 richTextBox1.AppendText(line + "\r\n", Color.Black);
 
             LineCounter++;
+
+            labelLines.Text = $"Lines: {LineCounter}";
+
+            if (Properties.Settings.Default.TraceViewAutoScroll)
+            {
+                richTextBox1.SelectionStart = richTextBox1.Text.Length;
+                richTextBox1.ScrollToCaret();
+            }
         }
 
 
@@ -57,6 +65,11 @@ namespace Knv.DAQ.Controls
         private void buttonToolStripClear_Click(object sender, EventArgs e)
         {
             Clear();
+        }
+
+        private void buttonToolStripAutoScroll_Click(object sender, EventArgs e)
+        {
+            Properties.Settings.Default.TraceViewAutoScroll = !Properties.Settings.Default.TraceViewAutoScroll;
         }
     }
 }

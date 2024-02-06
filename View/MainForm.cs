@@ -315,5 +315,10 @@
             knvAnalogOutputControl2.SamplesCount = DaqIo.Instance.Ao2.SamplesCount;
             knvAnalogOutputControl2.Divider = DaqIo.Instance.Ao2.Divider;
         }
+
+        private void knvTracingControl1_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }

@@ -93,6 +93,7 @@
             // 
             this.buttonToolStripClear.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
             this.buttonToolStripClear.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.buttonToolStripClear.Image = global::Knv.DAQ.Properties.Resources.Delete16x16;
             this.buttonToolStripClear.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.buttonToolStripClear.Name = "buttonToolStripClear";
             this.buttonToolStripClear.Size = new System.Drawing.Size(23, 22);
@@ -106,10 +107,12 @@
             this.buttonToolStripAutoScroll.CheckOnClick = true;
             this.buttonToolStripAutoScroll.CheckState = System.Windows.Forms.CheckState.Checked;
             this.buttonToolStripAutoScroll.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.buttonToolStripAutoScroll.Image = global::Knv.DAQ.Properties.Resources.Scroll16;
             this.buttonToolStripAutoScroll.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.buttonToolStripAutoScroll.Name = "buttonToolStripAutoScroll";
             this.buttonToolStripAutoScroll.Size = new System.Drawing.Size(23, 22);
             this.buttonToolStripAutoScroll.Text = "Auto-Scrolling";
+            this.buttonToolStripAutoScroll.Click += new System.EventHandler(this.buttonToolStripAutoScroll_Click);
             // 
             // richTextBox1
             // 
@@ -122,13 +125,13 @@
             this.richTextBox1.TabIndex = 5;
             this.richTextBox1.Text = "";
             // 
-            // TracingControl
+            // KnvTracingControl
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.Controls.Add(this.tableLayoutPanel1);
             this.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Name = "TracingControl";
+            this.Name = "KnvTracingControl";
             this.Size = new System.Drawing.Size(666, 221);
             this.tableLayoutPanel1.ResumeLayout(false);
             this.panel1.ResumeLayout(false);

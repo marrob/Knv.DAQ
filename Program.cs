@@ -65,7 +65,9 @@
                     new Commands.ConnectCommand(),
                     new Commands.AlwaysOnTopCommand(_mainForm),
                     new Commands.TraceingEnableCommand(_mainForm),
-                    new Commands.HowIsWorkingCommand(),
+                    new Commands.SettingsCommand(_mainForm),
+                    new Commands.HowIsWorkingCommand(_mainForm),
+
                 };
                 #endregion
 

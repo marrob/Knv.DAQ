@@ -19,6 +19,7 @@ namespace Knv.DAQ.Commands
             Text = "Tracing";
             ShortcutKeys = Keys.F7;
             DisplayStyle = ToolStripItemDisplayStyle.ImageAndText;
+            Image = Resources.Listen32;
             Enabled = true;
           
             EventAggregator.Instance.Subscribe((Action<ShowAppEvent>)(e =>

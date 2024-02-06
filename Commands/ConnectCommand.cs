@@ -14,7 +14,7 @@ namespace Knv.DAQ.Commands
         public ConnectCommand(/*App app*/)
         {
             Text = "Connect";
-            //Image = Resources.Play_Hot48;
+            Image = Resources.Network_Disconnected_32;
             ShortcutKeys = Keys.F7;
             DisplayStyle = ToolStripItemDisplayStyle.ImageAndText;
             Enabled = true;
@@ -24,13 +24,13 @@ namespace Knv.DAQ.Commands
                 {
                     Text = "Disconnect";
                     BackColor = Color.Orange;
-                    //Image = Resources.Stop_Normal_Red48;
+                    Image = Resources.Network_Connected_32;
                 }
                 else
                 {
                     Text = "Connect";
                     BackColor = SystemColors.Control;
-                    //Image = Resources.Play_Hot48;
+                    Image = Resources.Network_Disconnected_32;
                 }
             }));
         }

@@ -1,19 +1,19 @@
 ﻿
 namespace Knv.DAQ.Commands
 {
-   using Properties;
+    using Properties;
     using System;
     using System.Windows.Forms;
     using View;
 
-    class HowIsWorkingCommand : ToolStripMenuItem
+    class SettingsCommand : ToolStripMenuItem
     {
         readonly IMainForm _mainForm;
-        public HowIsWorkingCommand(IMainForm mainForm)
+        public SettingsCommand(IMainForm mainForm)
         {
-            Image = Resources.Help_circle_outline_48;
+            Image = Resources.Settings_outline_48;
             DisplayStyle = ToolStripItemDisplayStyle.ImageAndText;
-            Text = "How is Working?";
+            Text = "Settings";
             _mainForm = mainForm;
         }
 
@@ -24,7 +24,7 @@ namespace Knv.DAQ.Commands
             if(_mainForm.AlwaysOnTop) 
                 _mainForm.AlwaysOnTop = false;
 
-            var hiw = new HowIsWorkingForm();
+            var hiw = new SettingsForm();
             
             hiw.ShowDialog();
         }

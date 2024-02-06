@@ -36,10 +36,10 @@
             this.textBoxOffset = new System.Windows.Forms.TextBox();
             this.labelCustomValue = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
-            this.textBoxTitle = new System.Windows.Forms.TextBox();
             this.textBoxMulti = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.textBoxRaw = new System.Windows.Forms.TextBox();
+            this.textBoxTitle = new System.Windows.Forms.TextBox();
             this.trackBar1 = new System.Windows.Forms.TrackBar();
             this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
@@ -57,9 +57,9 @@
             this.label6 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.comboBoxWave = new System.Windows.Forms.ComboBox();
+            this.comboBoxRunMode = new System.Windows.Forms.ComboBox();
             this.buttonStop = new System.Windows.Forms.Button();
             this.buttonStartStop = new System.Windows.Forms.Button();
-            this.comboBoxRunMode = new System.Windows.Forms.ComboBox();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.trackBar1)).BeginInit();
             this.tableLayoutPanel2.SuspendLayout();
@@ -136,16 +136,6 @@
             this.label2.TabIndex = 3;
             this.label2.Text = "Multi:";
             // 
-            // textBoxTitle
-            // 
-            this.textBoxTitle.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBoxTitle.Location = new System.Drawing.Point(3, 3);
-            this.textBoxTitle.Name = "textBoxTitle";
-            this.textBoxTitle.Size = new System.Drawing.Size(450, 29);
-            this.textBoxTitle.TabIndex = 2;
-            this.textBoxTitle.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.textBoxTitle.TextChanged += new System.EventHandler(this.textBoxTitle_TextChanged);
-            // 
             // textBoxMulti
             // 
             this.textBoxMulti.Location = new System.Drawing.Point(41, 65);
@@ -172,6 +162,16 @@
             this.textBoxRaw.Size = new System.Drawing.Size(63, 20);
             this.textBoxRaw.TabIndex = 0;
             this.textBoxRaw.Text = "0.00";
+            // 
+            // textBoxTitle
+            // 
+            this.textBoxTitle.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textBoxTitle.Location = new System.Drawing.Point(3, 3);
+            this.textBoxTitle.Name = "textBoxTitle";
+            this.textBoxTitle.Size = new System.Drawing.Size(450, 29);
+            this.textBoxTitle.TabIndex = 2;
+            this.textBoxTitle.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.textBoxTitle.TextChanged += new System.EventHandler(this.textBoxTitle_TextChanged);
             // 
             // trackBar1
             // 
@@ -343,26 +343,6 @@
             this.comboBoxWave.TabIndex = 5;
             this.comboBoxWave.SelectedIndexChanged += new System.EventHandler(this.comboBoxWave_SelectedIndexChanged);
             // 
-            // buttonStop
-            // 
-            this.buttonStop.Location = new System.Drawing.Point(114, 18);
-            this.buttonStop.Name = "buttonStop";
-            this.buttonStop.Size = new System.Drawing.Size(75, 23);
-            this.buttonStop.TabIndex = 4;
-            this.buttonStop.Text = "Stop";
-            this.buttonStop.UseVisualStyleBackColor = true;
-            this.buttonStop.Click += new System.EventHandler(this.buttonStop_Click);
-            // 
-            // buttonStartStop
-            // 
-            this.buttonStartStop.Location = new System.Drawing.Point(196, 18);
-            this.buttonStartStop.Name = "buttonStartStop";
-            this.buttonStartStop.Size = new System.Drawing.Size(75, 23);
-            this.buttonStartStop.TabIndex = 3;
-            this.buttonStartStop.Text = "Start";
-            this.buttonStartStop.UseVisualStyleBackColor = true;
-            this.buttonStartStop.Click += new System.EventHandler(this.buttonStartStop_Click);
-            // 
             // comboBoxRunMode
             // 
             this.comboBoxRunMode.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
@@ -371,6 +351,31 @@
             this.comboBoxRunMode.Name = "comboBoxRunMode";
             this.comboBoxRunMode.Size = new System.Drawing.Size(105, 21);
             this.comboBoxRunMode.TabIndex = 2;
+            // 
+            // buttonStop
+            // 
+            this.buttonStop.Image = global::Knv.DAQ.Properties.Resources.Stop_Normal_Red16;
+            this.buttonStop.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.buttonStop.Location = new System.Drawing.Point(114, 18);
+            this.buttonStop.Name = "buttonStop";
+            this.buttonStop.Size = new System.Drawing.Size(75, 23);
+            this.buttonStop.TabIndex = 4;
+            this.buttonStop.Text = "Stop";
+            this.buttonStop.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.buttonStop.UseVisualStyleBackColor = true;
+            this.buttonStop.Click += new System.EventHandler(this.buttonStop_Click);
+            // 
+            // buttonStartStop
+            // 
+            this.buttonStartStop.Image = global::Knv.DAQ.Properties.Resources.Play_1_Normal16;
+            this.buttonStartStop.Location = new System.Drawing.Point(196, 18);
+            this.buttonStartStop.Name = "buttonStartStop";
+            this.buttonStartStop.Size = new System.Drawing.Size(75, 23);
+            this.buttonStartStop.TabIndex = 3;
+            this.buttonStartStop.Text = "Start";
+            this.buttonStartStop.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.buttonStartStop.UseVisualStyleBackColor = true;
+            this.buttonStartStop.Click += new System.EventHandler(this.buttonStartStop_Click);
             // 
             // KnvAnalogOutputControl
             // 

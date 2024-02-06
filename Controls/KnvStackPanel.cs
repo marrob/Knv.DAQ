@@ -1,13 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
-
-namespace Knv.DAQ.Controls
+﻿namespace Knv.DAQ.Controls
 {
+    using System;
+    using System.ComponentModel;
+    using System.Windows.Forms;
+
     /// <summary>
     /// A stackpanel similar to the Wpf stackpanel.
     /// </summary>

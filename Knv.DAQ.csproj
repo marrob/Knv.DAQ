@@ -67,6 +67,9 @@
     <Compile Include="Commands\ConnectCommand.cs">
       <SubType>Component</SubType>
     </Compile>
+    <Compile Include="Commands\SettingsCommand.cs">
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="Commands\HowIsWorkingCommand.cs">
       <SubType>Component</SubType>
     </Compile>
@@ -108,6 +111,7 @@
     <Compile Include="IO\AnalogOutput.cs" />
     <Compile Include="IO\DaqIo.cs" />
     <Compile Include="IO\Wave_UnitTest.cs" />
+    <Compile Include="Settings.cs" />
     <Compile Include="StatusBar\UpTime.cs">
       <SubType>Component</SubType>
     </Compile>
@@ -140,6 +144,12 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="View\SettingsForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\SettingsForm.Designer.cs">
+      <DependentUpon>SettingsForm.cs</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="Controls\KnvAnalogOutputControl.resx">
       <DependentUpon>KnvAnalogOutputControl.cs</DependentUpon>
     </EmbeddedResource>
@@ -165,6 +175,9 @@
     <EmbeddedResource Include="View\MainForm.resx">
       <DependentUpon>MainForm.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="View\SettingsForm.resx">
+      <DependentUpon>SettingsForm.cs</DependentUpon>
+    </EmbeddedResource>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -184,6 +197,16 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Elegantthemes-Softies-Meter.ico" />
+    <None Include="Resources\Settings-outline.48.png" />
+    <None Include="Resources\Network-Disconnected.32.png" />
+    <None Include="Resources\Network-Connected.32.png" />
+    <None Include="Resources\Help-circle-outline.48.png" />
+    <None Include="Resources\Listen32.png" />
+    <None Include="Resources\Scroll16.png" />
+    <None Include="Resources\Delete16x16.png" />
+    <None Include="Resources\Play_1_Normal16.png" />
+    <None Include="Resources\Stop_Normal_Red16.png" />
+    <None Include="Resources\Stop_Normal_Red24.png" />
     <None Include="Resources\Top-Arrow.32.png" />
     <None Include="Resources\Tatice-Cristal-Intense-Ok.32.png" />
     <None Include="Resources\Stop_Normal_Red32.png" />

@@ -430,5 +430,17 @@ namespace Knv.DAQ.Properties {
                 this["AlwaysOnTop"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("False")]
+        public bool TraceViewAutoScroll {
+            get {
+                return ((bool)(this["TraceViewAutoScroll"]));
+            }
+            set {
+                this["TraceViewAutoScroll"] = value;
+            }
+        }
     }
 }
