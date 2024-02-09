@@ -3,6 +3,7 @@ namespace Knv.DAQ.Commands
 {
    using Properties;
     using System;
+    using System.Diagnostics;
     using System.Windows.Forms;
     using View;
 
@@ -24,9 +25,25 @@ namespace Knv.DAQ.Commands
             if(_mainForm.AlwaysOnTop) 
                 _mainForm.AlwaysOnTop = false;
 
+            /*
             var hiw = new HowIsWorkingForm();
             
             hiw.ShowDialog();
+            */
+
+            ProcessStartInfo startInfo = new ProcessStartInfo();
+            startInfo.CreateNoWindow = false;
+            startInfo.UseShellExecute = false;
+            startInfo.FileName = "C:\\Windows\\System32\\mshta.exe";
+            startInfo.WindowStyle = ProcessWindowStyle.Hidden;
+            startInfo.Arguments = $"{Application.StartupPath}\\Help\\index.html";
+
+            // Start the process with the info we specified.
+            // Call WaitForExit and then the using statement will close.
+            using (Process exeProcess = Process.Start(startInfo))
+            {
+                exeProcess.WaitForExit();
+            }
         }
     }
 }

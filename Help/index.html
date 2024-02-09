@@ -1,0 +1,74 @@
+<html>
+
+<head>
+  <hta:application icon="icon.ico" 
+                   applicationname="Knv.DAQ"
+                   maximizebutton="yes" 
+                   minimizebutton="no" 
+                   scroll="no"
+                   selection="no" 
+                   singleinstance="yes"
+                   border ="dialog">  <!-- dialog, none, thin  -->
+    <script>
+      window.resizeTo(720, 480)
+      window.moveTo((screen.availWidth - 320) / 2, (screen.availHeight - 480) / 2)
+    </script>
+</head>
+
+
+<meta charset="utf-8">
+<meta http-equiv="x-ua-compatible" content="ie=9">
+<title>KNV.DAQ Help with HTML Application (HTA) </title>
+
+
+
+
+<body onload="document.getElementById('closeButtonId').focus()">
+  <script>
+    function telepites() {
+    //ES5	ECMAScript 5 (2009)
+    //'use strict';
+    //console.log("Porba");
+    var i = "Hello World";
+    //   let str = "Hello, World!";
+
+        document.getElementById('console').style.backgroundColor = "blue";
+        document.getElementById('console').innerText = "ez egy content";
+      }
+
+
+    function readFile() {
+        var timInMSs = Date.now();
+        /* var reader = new FileReader();
+ 
+        reader.readAsText(file);
+        */
+      }
+
+
+
+      function closeWindow() {
+        console.log("closeWindow()");
+        //window.closeWindow();
+   
+      }
+
+  </script>
+  
+<h2>Felépítése</h2>
+
+<h2>Analog Bemenetek</h2>
+
+<h2>Analog Kimenetek<h2>
+
+<h2>Digitális Bememnetek<h2>
+
+<h2>Digitális Kimenetek<h2>
+
+
+  <div style="text-align: center">
+    <input id="closeButtonId" type="button" value="Close" onclick="closeWindow()">
+  </div>
+</body>
+
+</html>
