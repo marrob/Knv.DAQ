@@ -442,5 +442,29 @@ namespace Knv.DAQ.Properties {
                 this["TraceViewAutoScroll"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("DC")]
+        public string Ao1SelectedTab {
+            get {
+                return ((string)(this["Ao1SelectedTab"]));
+            }
+            set {
+                this["Ao1SelectedTab"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("DC")]
+        public string Ao2SelectedTab {
+            get {
+                return ((string)(this["Ao2SelectedTab"]));
+            }
+            set {
+                this["Ao2SelectedTab"] = value;
+            }
+        }
     }
 }

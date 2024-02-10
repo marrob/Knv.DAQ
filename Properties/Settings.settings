@@ -107,5 +107,11 @@
     <Setting Name="TraceViewAutoScroll" Type="System.Boolean" Scope="User">
       <Value Profile="(Default)">False</Value>
     </Setting>
+    <Setting Name="Ao1SelectedTab" Type="System.String" Scope="User">
+      <Value Profile="(Default)">DC</Value>
+    </Setting>
+    <Setting Name="Ao2SelectedTab" Type="System.String" Scope="User">
+      <Value Profile="(Default)">DC</Value>
+    </Setting>
   </Settings>
 </SettingsFile>

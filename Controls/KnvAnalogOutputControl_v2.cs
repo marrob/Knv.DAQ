@@ -9,7 +9,7 @@ namespace Knv.DAQ.Controls
     using System.Windows.Forms;
     using IO;
 
-    public partial class KnvAnalogOutputControl : UserControl
+    public partial class KnvAnalogOutputControl_v2 : UserControl
     {
 
         Dictionary<string, WaveRunMode> RunList = new Dictionary<string, WaveRunMode>() 
@@ -17,7 +17,6 @@ namespace Knv.DAQ.Controls
             { "Single", WaveRunMode.RUN_SINGLE },
             { "Continuous", WaveRunMode.RUN_CONTINUOUS },
         };
-
 
         Dictionary<string, WaveForm> WaveList = new Dictionary<string, WaveForm>()
         {
@@ -30,16 +29,43 @@ namespace Knv.DAQ.Controls
             { "Custom", WaveForm.WAVE_CUSTOM },
         };
 
-        public event EventHandler<double>ValueChanged;
+        public event EventHandler<double>DC_ValueChanged;
         public event EventHandler<WaveForm> WaveChanged;
         public event EventHandler Start;
         public event EventHandler Stop;
 
+        string _title;
         [Category("KNV")]
         public string Title
         {
-            get { return textBoxTitle.Text; }
-            set { textBoxTitle.Text = value; }
+            get { return _title; }
+            set 
+            { 
+                textBoxTitle.Text = value;
+                labelTitle.Text = value;
+                _title = value;
+            }
+        }
+
+        [Category("KNV")]
+        public string PhyName 
+        {
+            get { return labelPhyName.Text; }
+            set { labelPhyName.Text = value;}
+        }
+
+        Color _color = SystemColors.Control;
+        [Category("KNV")]
+        public Color Channel
+        {
+            get { return _color; }
+            set 
+            {
+                _color = value;
+                labelPhyName.BackColor = value;
+                labelTitle.BackColor = value;
+                labelSettings.BackColor = value;
+            }
         }
 
         double _multi = double.NaN;
@@ -53,34 +79,17 @@ namespace Knv.DAQ.Controls
                 {
                     _multi = value;
                     textBoxMulti.Text = value.ToString();
-                    MultiplierOrOffsetChanged();
+                    SettingsChanged();
                 }
             }
         }
-
-        double _offset = double.NaN;
-        [Category("KNV")]
-        public double Offset
-        {
-            get { return _offset; }
-            set
-            {
-                if (value != _offset)
-                {
-                    _offset = value;
-                    textBoxOffset.Text = value.ToString();
-                    MultiplierOrOffsetChanged();
-                }
-            }
-        }
-
+ 
         [Category("KNV")]
         public string Unit
         {
             get { return textBoxUnit.Text; }
             set { textBoxUnit.Text = value; }
         }
-
 
         [Category("KNV")]
         public double Value 
@@ -93,12 +102,10 @@ namespace Knv.DAQ.Controls
             {
                 trackBar1.Value = (int)(value * 10);
                 double ao = trackBar1.Value / 10.0;
-                labelCustomValue.Text = $"{ao * Multiplier + Offset}{Unit}";
+                labelDC.Text = $"{ao * Multiplier}{Unit}";
                 textBoxRaw.Text = $"{ao:N2}V";
             }
         }
-
-        bool _init = false;
 
         [Category("KNV")]
         public WaveForm Wave
@@ -110,7 +117,6 @@ namespace Knv.DAQ.Controls
             }
             set
             {
-
                 comboBoxWave.SelectedIndex = WaveList.Values.ToList().IndexOf(value);
                 _init = true;
             }
@@ -129,7 +135,6 @@ namespace Knv.DAQ.Controls
                 comboBoxRunMode.SelectedIndex = RunList.Values.ToList().IndexOf(value);
             }
         }
-
 
         [Category("KNV")]
         public double WaveAmplitude 
@@ -152,7 +157,6 @@ namespace Knv.DAQ.Controls
             set { textBoxDutyCycle.Text = value.ToString(); }
         }
 
-
         [Category("KNV")]
         public int SamplesCount
         {
@@ -167,16 +171,33 @@ namespace Knv.DAQ.Controls
             set { textBoxDivider.Text = value.ToString(); }
         }
 
-
-
-        void MultiplierOrOffsetChanged()
+        [Category("KNV")]
+        public string SelctedTab
         {
-            double ao = trackBar1.Value / 10.0;
-            labelCustomValue.Text = $"{ao * Multiplier + Offset}{Unit}";
-            textBoxRaw.Text = $"{ao:N2}V";
+            get { return tabControl1.SelectedTab.Name; }
+            set 
+            {
+                if (!string.IsNullOrEmpty(value))
+                {
+                    if (tabControl1.TabPages.Cast<TabPage>().Select(x => x.Name).Contains(value))
+                        tabControl1.SelectTab(value);
+                    else
+                        throw new ApplicationException("");
+                }
+            }
         }
 
-        public KnvAnalogOutputControl()
+        bool _init = false;
+
+        void SettingsChanged()
+        {
+            double ao = trackBar1.Value / 10.0;
+            labelDC.Text = $"{ao * Multiplier}{Unit}";
+            textBoxRaw.Text = $"{ao:N2}V";
+            labelSettings.Text = $"0..{10 * Multiplier} {Unit}";
+        }
+
+        public KnvAnalogOutputControl_v2()
         {
             InitializeComponent();
 
@@ -192,61 +213,54 @@ namespace Knv.DAQ.Controls
             comboBoxWave.DisplayMember = "Key";
             comboBoxWave.SelectedValue = "Value";
 
-        }
-
-        private void trackBar1_Scroll(object sender, EventArgs e)
-        {
-            double ao = trackBar1.Value / 10.0;
-            labelCustomValue.Text = $"{ao * Multiplier + Offset}{Unit}";
-            textBoxRaw.Text = $"{ao:N2}V";
-            ValueChanged?.Invoke(this, ao);
-        }
-
-        private void textBoxMulti_TextChanged(object sender, EventArgs e)
-        {
-            if (double.TryParse(textBoxMulti.Text, out double value))
+            textBoxTitle.TextChanged += (o, e) =>
             {
-                textBoxMulti.BackColor = Color.White;
-                Multiplier = value;
-            }
-            else
-            {
-                textBoxMulti.BackColor = Color.Red;
-            }
-        }
+                Title = textBoxTitle.Text;
+                labelTitle.Text = textBoxTitle.Text;
+            };
 
-        private void textBoxOffset_TextChanged(object sender, EventArgs e)
-        {
-            if (double.TryParse(textBoxOffset.Text, out double value))
+            textBoxMulti.TextChanged += (o, e) =>
             {
-                textBoxOffset.BackColor = Color.White;
-                Offset = value;
-            }
-            else
+                if (double.TryParse(textBoxMulti.Text, out double value))
+                {
+                    textBoxMulti.BackColor = Color.White;
+                    Multiplier = value;
+                    SettingsChanged();
+                }
+                else
+                {
+                    textBoxMulti.BackColor = Color.Red;
+                }
+            };
+
+            textBoxUnit.TextChanged += (o, e) =>
             {
-                textBoxOffset.BackColor = Color.Red;
-            }
-        }
+                labelSettings.Text = $"0..{10 * Multiplier} {Unit}";
+            };
 
-        private void buttonStop_Click(object sender, EventArgs e)
-        {
-            Stop?.Invoke(this, EventArgs.Empty);
-        }
+            trackBar1.Scroll += (o, e) =>
+            {
+                double ao = trackBar1.Value / 10.0;
+                labelDC.Text = $"{ao * Multiplier}{Unit}";
+                textBoxRaw.Text = $"{ao:N2}V";
+                DC_ValueChanged?.Invoke(this, ao);           
+            };
 
-        private void buttonStartStop_Click(object sender, EventArgs e)
-        {
-            Start?.Invoke(this, EventArgs.Empty);
+            buttonStop.Click += (o, e) => 
+            { 
+                Stop?.Invoke(this, EventArgs.Empty); 
+            };
+
+            buttonStartStop.Click += (o, e) => 
+            { 
+                Start?.Invoke(this, EventArgs.Empty); 
+            };
         }
 
         private void comboBoxWave_SelectedIndexChanged(object sender, EventArgs e)
         {
             if(_init)
                 WaveChanged?.Invoke(this, Wave);
-        }
-
-        private void textBoxTitle_TextChanged(object sender, EventArgs e)
-        {
-
         }
     }
 }

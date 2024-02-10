@@ -55,7 +55,8 @@
         {
             InitializeComponent();
 
-        //    knvAnalogOutputControl1.SetMode(WaveRunMode.WAVE_MODE_SINGLE);
+            knvAnalogOutputControl1.PhyName = "AO1";
+            knvAnalogOutputControl2.PhyName = "AO2";
 
             EventAggregator.Instance.Subscribe((Action<ConnectionChangedAppEvent>)(e =>
             {
@@ -74,8 +75,6 @@
                     double ao1dc = DaqIo.Instance.Ao1.GetDC();
                     knvAnalogOutputControl1.Value = ao1dc;
 
-
-
                     knvAnalogOutputControl2.Wave = DaqIo.Instance.Ao2.SelectedWave();
                     DaqIo.Instance.Ao2.ReadConfig();
 
@@ -88,7 +87,6 @@
 
                     double ao2dc = DaqIo.Instance.Ao2.GetDC();
                     knvAnalogOutputControl2.Value = ao2dc;
-
                 }
             }));
 
@@ -126,7 +124,7 @@
         }
 
         private void LoadSettings()
-        { 
+        {
             knvAnalogInputControl1.Title = Settings.Default.Ai1Title;
             knvAnalogInputControl1.Multiplier = Settings.Default.Ai1Multi;
             knvAnalogInputControl1.Offset = Settings.Default.Ai1Offset;
@@ -151,14 +149,15 @@
             knvAnalogInputControl4.Unit = Settings.Default.Ai4Unit;
             knvAnalogInputControl4.Samples = Settings.Default.Ai4Samples;
 
+            knvAnalogOutputControl1.SelctedTab = Settings.Default.Ao1SelectedTab;
             knvAnalogOutputControl1.Title = Settings.Default.Ao1Title;
             knvAnalogOutputControl1.Multiplier = Settings.Default.Ao1Multi;
-            knvAnalogOutputControl1.Offset = Settings.Default.Ao1Offset;
             knvAnalogOutputControl1.Unit = Settings.Default.Ao1Unit;
 
+
+            knvAnalogOutputControl2.SelctedTab = Settings.Default.Ao2SelectedTab;
             knvAnalogOutputControl2.Title = Settings.Default.Ao2Title;
             knvAnalogOutputControl2.Multiplier = Settings.Default.Ao2Multi;
-            knvAnalogOutputControl2.Offset = Settings.Default.Ao2Offset;
             knvAnalogOutputControl2.Unit = Settings.Default.Ao2Unit;
 
             numericUpDownSPS.Value = Settings.Default.SamplePerSec;
@@ -169,7 +168,94 @@
 
             if(Settings.Default.WindowSize.Width > 0 && Settings.Default.WindowSize.Height > 0)
                 this.Size = Settings.Default.WindowSize;
+
+
+            knvAnalogOutputControl1.DC_ValueChanged += (o, volts) =>
+            {
+                try
+                {
+                    DaqIo.Instance.Ao1.SetDC(volts);
+                }
+                catch (Exception ex)
+                {
+                    DaqIo.Instance.TraceError($"Error:{ex.Message}");
+                }
+            };
+
+            knvAnalogOutputControl1.WaveChanged += (o, wave) =>
+            {
+                DaqIo.Instance.Ao1.SelectWave(wave);
+                DaqIo.Instance.Ao1.ReadConfig();
+
+                knvAnalogOutputControl1.RunMode = DaqIo.Instance.Ao1.RunMode;
+                knvAnalogOutputControl1.WaveAmplitude = DaqIo.Instance.Ao1.Amplitude;
+                knvAnalogOutputControl1.WaveOffset = DaqIo.Instance.Ao1.Offset;
+                knvAnalogOutputControl1.WaveDutyCycle = DaqIo.Instance.Ao1.DutyCycle;
+                knvAnalogOutputControl1.SamplesCount = DaqIo.Instance.Ao1.SamplesCount;
+                knvAnalogOutputControl1.Divider = DaqIo.Instance.Ao1.Divider;
+            };
+
+            knvAnalogOutputControl1.Start += (o, e) =>
+            {
+                DaqIo.Instance.Ao1.SelectWave(knvAnalogOutputControl1.Wave);
+                DaqIo.Instance.Ao1.RunMode = knvAnalogOutputControl1.RunMode;
+                DaqIo.Instance.Ao1.Amplitude = knvAnalogOutputControl1.WaveAmplitude;
+                DaqIo.Instance.Ao1.Offset = knvAnalogOutputControl1.WaveOffset;
+                DaqIo.Instance.Ao1.DutyCycle = knvAnalogOutputControl1.WaveDutyCycle;
+                DaqIo.Instance.Ao1.SamplesCount = knvAnalogOutputControl1.SamplesCount;
+                DaqIo.Instance.Ao1.Divider = knvAnalogOutputControl1.Divider;
+                DaqIo.Instance.Ao1.Start();
+            };
+
+            knvAnalogOutputControl1.Stop += (o, e) =>
+            {
+                DaqIo.Instance.Ao1.Stop();
+            };
+
+            knvAnalogOutputControl2.DC_ValueChanged += (o, volts) =>
+            {
+                try
+                {
+                    DaqIo.Instance.Ao2.SetDC(volts);
+                }
+                catch (Exception ex)
+                {
+                    DaqIo.Instance.TraceError($"Error:{ex.Message}");
+                }
+            };
+
+            knvAnalogOutputControl2.WaveChanged += (o, wave) =>
+            {
+                DaqIo.Instance.Ao2.SelectWave(wave);
+                DaqIo.Instance.Ao2.ReadConfig();
+
+                knvAnalogOutputControl2.RunMode = DaqIo.Instance.Ao2.RunMode;
+                knvAnalogOutputControl2.WaveAmplitude = DaqIo.Instance.Ao2.Amplitude;
+                knvAnalogOutputControl2.WaveOffset = DaqIo.Instance.Ao2.Offset;
+                knvAnalogOutputControl2.WaveDutyCycle = DaqIo.Instance.Ao2.DutyCycle;
+                knvAnalogOutputControl2.SamplesCount = DaqIo.Instance.Ao2.SamplesCount;
+                knvAnalogOutputControl2.Divider = DaqIo.Instance.Ao2.Divider;
+            };
+
+            knvAnalogOutputControl2.Start += (o, e) =>
+            {
+                DaqIo.Instance.Ao2.SelectWave(knvAnalogOutputControl1.Wave);
+                DaqIo.Instance.Ao2.RunMode = knvAnalogOutputControl1.RunMode;
+                DaqIo.Instance.Ao2.Amplitude = knvAnalogOutputControl1.WaveAmplitude;
+                DaqIo.Instance.Ao2.Offset = knvAnalogOutputControl1.WaveOffset;
+                DaqIo.Instance.Ao2.DutyCycle = knvAnalogOutputControl1.WaveDutyCycle;
+                DaqIo.Instance.Ao2.SamplesCount = knvAnalogOutputControl1.SamplesCount;
+                DaqIo.Instance.Ao2.Divider = knvAnalogOutputControl1.Divider;
+                DaqIo.Instance.Ao2.Start();
+            };
+
+            knvAnalogOutputControl2.Stop += (o, e) =>
+            {
+                DaqIo.Instance.Ao2.Stop();
+            };
         }
+
+  
 
         private void SaveSettings()
         {
@@ -197,14 +283,14 @@
             Settings.Default.Ai4Unit = knvAnalogInputControl4.Unit;
             Settings.Default.Ai4Samples = knvAnalogInputControl4.Samples;
 
+            Settings.Default.Ao1SelectedTab = knvAnalogOutputControl1.SelctedTab;
             Settings.Default.Ao1Title = knvAnalogOutputControl1.Title;
             Settings.Default.Ao1Multi = knvAnalogOutputControl1.Multiplier;
-            Settings.Default.Ao1Offset = knvAnalogOutputControl1.Offset;
             Settings.Default.Ao1Unit = knvAnalogOutputControl1.Unit;
 
+            Settings.Default.Ao2SelectedTab = knvAnalogOutputControl2.SelctedTab;
             Settings.Default.Ao2Title = knvAnalogOutputControl2.Title;
             Settings.Default.Ao2Multi = knvAnalogOutputControl2.Multiplier;
-            Settings.Default.Ao2Offset = knvAnalogOutputControl2.Offset;
             Settings.Default.Ao2Unit = knvAnalogOutputControl2.Unit;
 
 
@@ -227,98 +313,6 @@
         private void numericUpDownSPS_ValueChanged(object sender, EventArgs e)
         {
             timerSampling.Interval = (int)(1.0/(double)numericUpDownSPS.Value * 1000);
-        }
-
-        private void knvAnalogOutputControl2_ValueChanged(object sender, double voltage)
-        {
-            try
-            {
-                DaqIo.Instance.Ao2.SetDC(voltage);
-            }
-            catch (Exception ex)
-            {
-                DaqIo.Instance.TraceError($"Error:{ex.Message}");
-            }
-        }
-
-        private void knvAnalogOutputControl1_ValueChanged(object sender, double voltage)
-        {
-            try
-            {
-                DaqIo.Instance.Ao1.SetDC(voltage);
-            }
-            catch (Exception ex)
-            {
-                DaqIo.Instance.TraceError($"Error:{ex.Message}");
-            }
-        }
-
-        private void knvAnalogOutputControl1_Start(object sender, EventArgs e)
-        {
-            DaqIo.Instance.Ao1.SelectWave(knvAnalogOutputControl1.Wave);
-            DaqIo.Instance.Ao1.RunMode = knvAnalogOutputControl1.RunMode;
-            DaqIo.Instance.Ao1.Amplitude = knvAnalogOutputControl1.WaveAmplitude;
-            DaqIo.Instance.Ao1.Offset = knvAnalogOutputControl1.WaveOffset;
-            DaqIo.Instance.Ao1.DutyCycle = knvAnalogOutputControl1.WaveDutyCycle;
-            DaqIo.Instance.Ao1.SamplesCount = knvAnalogOutputControl1.SamplesCount;
-            DaqIo.Instance.Ao1.Divider = knvAnalogOutputControl1.Divider;
-            DaqIo.Instance.Ao1.Start();
-
-        }
-
-        private void knvAnalogOutputControl1_Stop(object sender, EventArgs e)
-        {
-            DaqIo.Instance.Ao1.Stop();
-        }
-
-        private void knvAnalogOutputControl2_Start(object sender, EventArgs e)
-        {
-            DaqIo.Instance.Ao2.SelectWave(knvAnalogOutputControl2.Wave);
-            DaqIo.Instance.Ao2.RunMode = knvAnalogOutputControl2.RunMode;
-            DaqIo.Instance.Ao2.Amplitude = knvAnalogOutputControl2.WaveAmplitude;
-            DaqIo.Instance.Ao2.Offset = knvAnalogOutputControl2.WaveOffset;
-            DaqIo.Instance.Ao2.DutyCycle = knvAnalogOutputControl2.WaveDutyCycle;
-            DaqIo.Instance.Ao2.SamplesCount = knvAnalogOutputControl2.SamplesCount;
-            DaqIo.Instance.Ao2.Divider = knvAnalogOutputControl2.Divider;
-            DaqIo.Instance.Ao2.Start();
-        }
-
-        private void knvAnalogOutputControl2_Stop(object sender, EventArgs e)
-        {
-            DaqIo.Instance.Ao2.Stop();
-        }
-
-        private void knvAnalogOutputControl1_WaveChanged(object sender, WaveForm e)
-        {
-            DaqIo.Instance.Ao1.SelectWave(e);
-            DaqIo.Instance.Ao1.ReadConfig();
-
-            knvAnalogOutputControl1.RunMode = DaqIo.Instance.Ao1.RunMode;
-            knvAnalogOutputControl1.WaveAmplitude = DaqIo.Instance.Ao1.Amplitude;
-            knvAnalogOutputControl1.WaveOffset = DaqIo.Instance.Ao1.Offset;
-            knvAnalogOutputControl1.WaveDutyCycle = DaqIo.Instance.Ao1.DutyCycle;
-            knvAnalogOutputControl1.SamplesCount = DaqIo.Instance.Ao1.SamplesCount;
-            knvAnalogOutputControl1.Divider = DaqIo.Instance.Ao1.Divider;
-
-            
-        }
-
-        private void knvAnalogOutputControl2_WaveChanged(object sender, WaveForm e)
-        {
-            DaqIo.Instance.Ao2.SelectWave(e);
-            DaqIo.Instance.Ao2.ReadConfig();
-
-            knvAnalogOutputControl2.RunMode = DaqIo.Instance.Ao2.RunMode;
-            knvAnalogOutputControl2.WaveAmplitude = DaqIo.Instance.Ao2.Amplitude;
-            knvAnalogOutputControl2.WaveOffset = DaqIo.Instance.Ao2.Offset;
-            knvAnalogOutputControl2.WaveDutyCycle = DaqIo.Instance.Ao2.DutyCycle;
-            knvAnalogOutputControl2.SamplesCount = DaqIo.Instance.Ao2.SamplesCount;
-            knvAnalogOutputControl2.Divider = DaqIo.Instance.Ao2.Divider;
-        }
-
-        private void knvTracingControl1_Load(object sender, EventArgs e)
-        {
-
         }
     }
 }

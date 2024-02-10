@@ -76,6 +76,12 @@
     <Compile Include="Commands\TraceingEnableCommand.cs">
       <SubType>Component</SubType>
     </Compile>
+    <Compile Include="Controls\KnvAnalogOutputControl_v2.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Controls\KnvAnalogOutputControl_v2.Designer.cs">
+      <DependentUpon>KnvAnalogOutputControl_v2.cs</DependentUpon>
+    </Compile>
     <Compile Include="Controls\KnvAnalogOutputControl.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -150,6 +156,9 @@
     <Compile Include="View\SettingsForm.Designer.cs">
       <DependentUpon>SettingsForm.cs</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="Controls\KnvAnalogOutputControl_v2.resx">
+      <DependentUpon>KnvAnalogOutputControl_v2.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Controls\KnvAnalogOutputControl.resx">
       <DependentUpon>KnvAnalogOutputControl.cs</DependentUpon>
     </EmbeddedResource>
