@@ -38,11 +38,9 @@ namespace Knv.DAQ.Commands
             startInfo.WindowStyle = ProcessWindowStyle.Hidden;
             startInfo.Arguments = $"{Application.StartupPath}\\Help\\index.html";
 
-            // Start the process with the info we specified.
-            // Call WaitForExit and then the using statement will close.
             using (Process exeProcess = Process.Start(startInfo))
             {
-                exeProcess.WaitForExit();
+                exeProcess.Start();
             }
         }
     }

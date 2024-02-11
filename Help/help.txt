@@ -1,0 +1,3 @@
+https://github.com/shipfam/shipfam.com/blob/master/fonts/segoe-ui.ttf
+https://github.com/tsenart/sight/blob/master/fonts/Consolas.ttf
+https://github.com/Odrha23/segoe-ui-font/blob/master/SegoeUI.eot
