@@ -8,9 +8,6 @@
     <Setting Name="TracingEnable" Type="System.Boolean" Scope="User">
       <Value Profile="(Default)">False</Value>
     </Setting>
-    <Setting Name="SamplePerSec" Type="System.Int32" Scope="User">
-      <Value Profile="(Default)">1</Value>
-    </Setting>
     <Setting Name="Ai1Title" Type="System.String" Scope="User">
       <Value Profile="(Default)">Analog Input 1</Value>
     </Setting>
@@ -112,6 +109,18 @@
     </Setting>
     <Setting Name="Ao2SelectedTab" Type="System.String" Scope="User">
       <Value Profile="(Default)">DC</Value>
+    </Setting>
+    <Setting Name="Ai1SelectedTab" Type="System.String" Scope="User">
+      <Value Profile="(Default)" />
+    </Setting>
+    <Setting Name="Ai2SelectedTab" Type="System.String" Scope="User">
+      <Value Profile="(Default)" />
+    </Setting>
+    <Setting Name="Ai3SelectedTab" Type="System.String" Scope="User">
+      <Value Profile="(Default)" />
+    </Setting>
+    <Setting Name="Ai4SelectedTab" Type="System.String" Scope="User">
+      <Value Profile="(Default)" />
     </Setting>
   </Settings>
 </SettingsFile>

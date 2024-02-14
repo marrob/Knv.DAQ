@@ -49,18 +49,6 @@ namespace Knv.DAQ.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("1")]
-        public int SamplePerSec {
-            get {
-                return ((int)(this["SamplePerSec"]));
-            }
-            set {
-                this["SamplePerSec"] = value;
-            }
-        }
-        
-        [global::System.Configuration.UserScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("Analog Input 1")]
         public string Ai1Title {
             get {
@@ -464,6 +452,54 @@ namespace Knv.DAQ.Properties {
             }
             set {
                 this["Ao2SelectedTab"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        public string Ai1SelectedTab {
+            get {
+                return ((string)(this["Ai1SelectedTab"]));
+            }
+            set {
+                this["Ai1SelectedTab"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        public string Ai2SelectedTab {
+            get {
+                return ((string)(this["Ai2SelectedTab"]));
+            }
+            set {
+                this["Ai2SelectedTab"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        public string Ai3SelectedTab {
+            get {
+                return ((string)(this["Ai3SelectedTab"]));
+            }
+            set {
+                this["Ai3SelectedTab"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        public string Ai4SelectedTab {
+            get {
+                return ((string)(this["Ai4SelectedTab"]));
+            }
+            set {
+                this["Ai4SelectedTab"] = value;
             }
         }
     }

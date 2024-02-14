@@ -5,16 +5,49 @@ namespace Knv.DAQ.Controls
     using System;
     using System.ComponentModel;
     using System.Drawing;
+    using System.Linq;
     using System.Windows.Forms;
 
-    public partial class KnvAnalogInputControl : UserControl
+    public partial class KnvAnalogInputControl_v2 : UserControl
     {
         [Category("KNV")]
+
+        string _title;
         public string Title 
         { 
-            get { return textBoxTitle.Text; }
-            set { textBoxTitle.Text = value; }
+            get 
+            {
+                return _title;
+            }
+            set 
+            {
+                _title = value;
+                labelTitle.Text = value; 
+                textBoxTitle.Text = value;
+            }
         }
+
+        [Category("KNV")]
+        public string PhyName
+        {
+            get { return labelPhyName.Text; }
+            set { labelPhyName.Text = value; }
+        }
+
+        Color _color = SystemColors.Control;
+        [Category("KNV")]
+        public Color Channel
+        {
+            get { return _color; }
+            set
+            {
+                _color = value;
+                labelPhyName.BackColor = value;
+                labelTitle.BackColor = value;
+                labelSettings.BackColor = value;
+            }
+        }
+
         double _multi = double.NaN;
         [Category("KNV")]
         public double Multiplier
@@ -45,6 +78,7 @@ namespace Knv.DAQ.Controls
                 }
             }
         }
+
         [Category("KNV")]
         public string Unit 
         { 
@@ -56,24 +90,26 @@ namespace Knv.DAQ.Controls
         public double MaxRawValue { get; set; } = 10;
 
         [Category("KNV")]
-        [DefaultValue(10)]
-        public int Samples 
+        public string SelctedTab
         {
-            get 
+            get { return tabControl1.SelectedTab.Name; }
+            set
             {
-                return knvMovingChart1.Samples; 
-            }
-            set 
-            { 
-                knvMovingChart1.Samples = value;
-                numericUpDownSamples.Value = value;
+                if (!string.IsNullOrEmpty(value))
+                {
+                    if (tabControl1.TabPages.Cast<TabPage>().Select(x => x.Name).Contains(value))
+                        tabControl1.SelectTab(value);
+                }
             }
         }
-        
 
-        public KnvAnalogInputControl()
+
+
+        public KnvAnalogInputControl_v2()
         {
             InitializeComponent();
+
+            knvMovingChart1.Samples = 10;
         }
 
         public void AddSample(double valueOfSample)
@@ -82,6 +118,7 @@ namespace Knv.DAQ.Controls
             knvMovingChart1.AddSample(value);
             textBoxCustomValue.Text = $"{value:N2}{Unit}";
             textBoxRawValue.Text = $"{valueOfSample:N2}V";
+            labelSettings.Text = $"{Offset}..{10 * Multiplier + Offset}{Unit}";
         }
 
         void MultiplierOrOffsetChanged()
@@ -115,9 +152,5 @@ namespace Knv.DAQ.Controls
             }
         }
 
-        private void numericUpDownSamples_ValueChanged(object sender, EventArgs e)
-        {
-            Samples = (int)numericUpDownSamples.Value;
-        }
     }
 }

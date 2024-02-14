@@ -31,7 +31,7 @@
             this.components = new System.ComponentModel.Container();
             this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.label10 = new System.Windows.Forms.Label();
-            this.textBoxDivider = new System.Windows.Forms.TextBox();
+            this.textBoxPrescaler = new System.Windows.Forms.TextBox();
             this.labelSamplesCount = new System.Windows.Forms.Label();
             this.textBoxSamplesCount = new System.Windows.Forms.TextBox();
             this.label9 = new System.Windows.Forms.Label();
@@ -53,6 +53,10 @@
             this.labelDC = new System.Windows.Forms.Label();
             this.trackBar1 = new System.Windows.Forms.TrackBar();
             this.tabPageWave = new System.Windows.Forms.TabPage();
+            this.textBoxPeriodTime = new System.Windows.Forms.TextBox();
+            this.label2 = new System.Windows.Forms.Label();
+            this.label1 = new System.Windows.Forms.Label();
+            this.textBoxApbClock = new System.Windows.Forms.TextBox();
             this.tabPageSettings = new System.Windows.Forms.TabPage();
             this.label15 = new System.Windows.Forms.Label();
             this.textBoxTitle = new System.Windows.Forms.TextBox();
@@ -62,9 +66,9 @@
             this.textBoxMulti = new System.Windows.Forms.TextBox();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.tableLayoutPanel3 = new System.Windows.Forms.TableLayoutPanel();
+            this.labelPhyName = new System.Windows.Forms.Label();
             this.labelSettings = new System.Windows.Forms.Label();
             this.labelTitle = new System.Windows.Forms.Label();
-            this.labelPhyName = new System.Windows.Forms.Label();
             this.tabControl1.SuspendLayout();
             this.tabPageDC.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.trackBar1)).BeginInit();
@@ -82,19 +86,19 @@
             // label10
             // 
             this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(150, 122);
+            this.label10.Location = new System.Drawing.Point(143, 122);
             this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(43, 13);
+            this.label10.Size = new System.Drawing.Size(54, 13);
             this.label10.TabIndex = 17;
-            this.label10.Text = "Divider:";
+            this.label10.Text = "Prescaler:";
             // 
-            // textBoxDivider
+            // textBoxPrescaler
             // 
-            this.textBoxDivider.Location = new System.Drawing.Point(199, 119);
-            this.textBoxDivider.Name = "textBoxDivider";
-            this.textBoxDivider.Size = new System.Drawing.Size(63, 20);
-            this.textBoxDivider.TabIndex = 16;
-            this.textBoxDivider.Text = "0";
+            this.textBoxPrescaler.Location = new System.Drawing.Point(199, 119);
+            this.textBoxPrescaler.Name = "textBoxPrescaler";
+            this.textBoxPrescaler.Size = new System.Drawing.Size(63, 20);
+            this.textBoxPrescaler.TabIndex = 16;
+            this.textBoxPrescaler.Text = "0";
             // 
             // labelSamplesCount
             // 
@@ -229,10 +233,11 @@
             this.tabControl1.Controls.Add(this.tabPageDC);
             this.tabControl1.Controls.Add(this.tabPageWave);
             this.tabControl1.Controls.Add(this.tabPageSettings);
-            this.tabControl1.Location = new System.Drawing.Point(3, 43);
+            this.tabControl1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tabControl1.Location = new System.Drawing.Point(3, 36);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(365, 178);
+            this.tabControl1.Size = new System.Drawing.Size(374, 221);
             this.tabControl1.TabIndex = 3;
             // 
             // tabPageDC
@@ -244,7 +249,7 @@
             this.tabPageDC.Location = new System.Drawing.Point(4, 22);
             this.tabPageDC.Name = "tabPageDC";
             this.tabPageDC.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPageDC.Size = new System.Drawing.Size(357, 152);
+            this.tabPageDC.Size = new System.Drawing.Size(366, 189);
             this.tabPageDC.TabIndex = 0;
             this.tabPageDC.Text = "DC";
             this.tabPageDC.UseVisualStyleBackColor = true;
@@ -273,7 +278,7 @@
             this.labelDC.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.labelDC.Location = new System.Drawing.Point(3, 48);
             this.labelDC.Name = "labelDC";
-            this.labelDC.Size = new System.Drawing.Size(351, 35);
+            this.labelDC.Size = new System.Drawing.Size(360, 35);
             this.labelDC.TabIndex = 5;
             this.labelDC.Text = "0.000V";
             this.labelDC.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -284,17 +289,21 @@
             this.trackBar1.Location = new System.Drawing.Point(3, 3);
             this.trackBar1.Maximum = 100;
             this.trackBar1.Name = "trackBar1";
-            this.trackBar1.Size = new System.Drawing.Size(351, 45);
+            this.trackBar1.Size = new System.Drawing.Size(360, 45);
             this.trackBar1.TabIndex = 2;
             this.trackBar1.TickStyle = System.Windows.Forms.TickStyle.Both;
             // 
             // tabPageWave
             // 
+            this.tabPageWave.Controls.Add(this.textBoxPeriodTime);
+            this.tabPageWave.Controls.Add(this.label2);
+            this.tabPageWave.Controls.Add(this.label1);
+            this.tabPageWave.Controls.Add(this.textBoxApbClock);
             this.tabPageWave.Controls.Add(this.buttonStartStop);
             this.tabPageWave.Controls.Add(this.buttonStop);
             this.tabPageWave.Controls.Add(this.label10);
             this.tabPageWave.Controls.Add(this.comboBoxRunMode);
-            this.tabPageWave.Controls.Add(this.textBoxDivider);
+            this.tabPageWave.Controls.Add(this.textBoxPrescaler);
             this.tabPageWave.Controls.Add(this.label5);
             this.tabPageWave.Controls.Add(this.labelSamplesCount);
             this.tabPageWave.Controls.Add(this.comboBoxWave);
@@ -309,10 +318,46 @@
             this.tabPageWave.Location = new System.Drawing.Point(4, 22);
             this.tabPageWave.Name = "tabPageWave";
             this.tabPageWave.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPageWave.Size = new System.Drawing.Size(357, 152);
+            this.tabPageWave.Size = new System.Drawing.Size(366, 195);
             this.tabPageWave.TabIndex = 1;
             this.tabPageWave.Text = "Wave";
             this.tabPageWave.UseVisualStyleBackColor = true;
+            // 
+            // textBoxPeriodTime
+            // 
+            this.textBoxPeriodTime.Location = new System.Drawing.Point(199, 146);
+            this.textBoxPeriodTime.Name = "textBoxPeriodTime";
+            this.textBoxPeriodTime.ReadOnly = true;
+            this.textBoxPeriodTime.Size = new System.Drawing.Size(63, 20);
+            this.textBoxPeriodTime.TabIndex = 21;
+            this.textBoxPeriodTime.Text = "0";
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(146, 149);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(40, 13);
+            this.label2.TabIndex = 20;
+            this.label2.Text = "Period:";
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(10, 98);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(48, 13);
+            this.label1.TabIndex = 19;
+            this.label1.Text = "APB clk:";
+            // 
+            // textBoxApbClock
+            // 
+            this.textBoxApbClock.Location = new System.Drawing.Point(64, 94);
+            this.textBoxApbClock.Name = "textBoxApbClock";
+            this.textBoxApbClock.ReadOnly = true;
+            this.textBoxApbClock.Size = new System.Drawing.Size(47, 20);
+            this.textBoxApbClock.TabIndex = 18;
+            this.textBoxApbClock.Text = "0";
             // 
             // tabPageSettings
             // 
@@ -324,7 +369,7 @@
             this.tabPageSettings.Controls.Add(this.textBoxMulti);
             this.tabPageSettings.Location = new System.Drawing.Point(4, 22);
             this.tabPageSettings.Name = "tabPageSettings";
-            this.tabPageSettings.Size = new System.Drawing.Size(357, 152);
+            this.tabPageSettings.Size = new System.Drawing.Size(366, 189);
             this.tabPageSettings.TabIndex = 2;
             this.tabPageSettings.Text = "Settings";
             this.tabPageSettings.UseVisualStyleBackColor = true;
@@ -382,16 +427,18 @@
             // tableLayoutPanel1
             // 
             this.tableLayoutPanel1.ColumnCount = 1;
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tableLayoutPanel1.Controls.Add(this.tableLayoutPanel3, 0, 0);
             this.tableLayoutPanel1.Controls.Add(this.tabControl1, 0, 1);
-            this.tableLayoutPanel1.Location = new System.Drawing.Point(3, 3);
+            this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 0);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
             this.tableLayoutPanel1.RowCount = 2;
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 18.22222F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 81.77778F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(371, 225);
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 33F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(380, 260);
             this.tableLayoutPanel1.TabIndex = 4;
+            this.tableLayoutPanel1.Paint += new System.Windows.Forms.PaintEventHandler(this.tableLayoutPanel1_Paint);
             // 
             // tableLayoutPanel3
             // 
@@ -402,37 +449,13 @@
             this.tableLayoutPanel3.Controls.Add(this.labelPhyName, 0, 0);
             this.tableLayoutPanel3.Controls.Add(this.labelSettings, 2, 0);
             this.tableLayoutPanel3.Controls.Add(this.labelTitle, 1, 0);
+            this.tableLayoutPanel3.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel3.Location = new System.Drawing.Point(3, 3);
             this.tableLayoutPanel3.Name = "tableLayoutPanel3";
             this.tableLayoutPanel3.RowCount = 1;
             this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel3.Size = new System.Drawing.Size(365, 34);
+            this.tableLayoutPanel3.Size = new System.Drawing.Size(374, 27);
             this.tableLayoutPanel3.TabIndex = 4;
-            // 
-            // labelSettings
-            // 
-            this.labelSettings.BackColor = System.Drawing.SystemColors.Control;
-            this.labelSettings.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelSettings.Location = new System.Drawing.Point(282, 0);
-            this.labelSettings.Margin = new System.Windows.Forms.Padding(0, 0, 3, 0);
-            this.labelSettings.Name = "labelSettings";
-            this.labelSettings.Size = new System.Drawing.Size(80, 34);
-            this.labelSettings.TabIndex = 3;
-            this.labelSettings.Text = "labelSettings";
-            this.labelSettings.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            // 
-            // labelTitle
-            // 
-            this.labelTitle.BackColor = System.Drawing.SystemColors.Control;
-            this.labelTitle.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.labelTitle.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelTitle.Location = new System.Drawing.Point(77, 0);
-            this.labelTitle.Margin = new System.Windows.Forms.Padding(0);
-            this.labelTitle.Name = "labelTitle";
-            this.labelTitle.Size = new System.Drawing.Size(205, 34);
-            this.labelTitle.TabIndex = 4;
-            this.labelTitle.Text = "labelTitle";
-            this.labelTitle.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // labelPhyName
             // 
@@ -442,10 +465,36 @@
             this.labelPhyName.Location = new System.Drawing.Point(3, 0);
             this.labelPhyName.Margin = new System.Windows.Forms.Padding(3, 0, 0, 0);
             this.labelPhyName.Name = "labelPhyName";
-            this.labelPhyName.Size = new System.Drawing.Size(74, 34);
+            this.labelPhyName.Size = new System.Drawing.Size(76, 27);
             this.labelPhyName.TabIndex = 5;
             this.labelPhyName.Text = "AOx";
             this.labelPhyName.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // labelSettings
+            // 
+            this.labelSettings.BackColor = System.Drawing.SystemColors.Control;
+            this.labelSettings.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.labelSettings.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelSettings.Location = new System.Drawing.Point(291, 0);
+            this.labelSettings.Margin = new System.Windows.Forms.Padding(0, 0, 3, 0);
+            this.labelSettings.Name = "labelSettings";
+            this.labelSettings.Size = new System.Drawing.Size(80, 27);
+            this.labelSettings.TabIndex = 3;
+            this.labelSettings.Text = "labelSettings";
+            this.labelSettings.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // labelTitle
+            // 
+            this.labelTitle.BackColor = System.Drawing.SystemColors.Control;
+            this.labelTitle.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.labelTitle.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelTitle.Location = new System.Drawing.Point(79, 0);
+            this.labelTitle.Margin = new System.Windows.Forms.Padding(0);
+            this.labelTitle.Name = "labelTitle";
+            this.labelTitle.Size = new System.Drawing.Size(212, 27);
+            this.labelTitle.TabIndex = 4;
+            this.labelTitle.Text = "labelTitle";
+            this.labelTitle.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // KnvAnalogOutputControl_v2
             // 
@@ -453,7 +502,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.Controls.Add(this.tableLayoutPanel1);
             this.Name = "KnvAnalogOutputControl_v2";
-            this.Size = new System.Drawing.Size(380, 234);
+            this.Size = new System.Drawing.Size(380, 260);
             this.tabControl1.ResumeLayout(false);
             this.tabPageDC.ResumeLayout(false);
             this.tabPageDC.PerformLayout();
@@ -485,7 +534,7 @@
         private System.Windows.Forms.Label labelSamplesCount;
         private System.Windows.Forms.TextBox textBoxSamplesCount;
         private System.Windows.Forms.Label label10;
-        private System.Windows.Forms.TextBox textBoxDivider;
+        private System.Windows.Forms.TextBox textBoxPrescaler;
         private System.Windows.Forms.TabControl tabControl1;
         private System.Windows.Forms.TabPage tabPageDC;
         private System.Windows.Forms.Label labelDC;
@@ -505,5 +554,9 @@
         private System.Windows.Forms.Label labelSettings;
         private System.Windows.Forms.Label labelTitle;
         private System.Windows.Forms.Label labelPhyName;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.TextBox textBoxApbClock;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.TextBox textBoxPeriodTime;
     }
 }

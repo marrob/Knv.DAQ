@@ -28,6 +28,7 @@ namespace Knv.DAQ.IO
         const int STM32_ADC_MAX = 4096;
         const double STM32_LSB = STM32_VREF / STM32_ADC_MAX;
         const double AO_MUL = 3.0303;
+        const int APB_CLOCK = 72000000;
 
         private readonly int _channel;
         private Func<string, string> _writeRead;
@@ -74,7 +75,7 @@ namespace Knv.DAQ.IO
     
         public int DutyCycle { get; set; }
         public int SamplesCount { get; set; }
-        public int Divider { get; set; }
+        public int Prescaler { get; set; }
 
         public AnalogOutput(int ch, Func<string, string> writeRead)
         {
@@ -99,8 +100,13 @@ namespace Knv.DAQ.IO
             if (_adcOffset > 1)
                 _adcOffset -= 1;
 
-            string cmd = $"AO{_channel}:WAV:CFG {(int)RunMode:X2} {_adcAmplitude:X4} {_adcOffset:X4} {DutyCycle:X2} {SamplesCount:X4} {Divider:X4}";
+            string cmd = $"AO{_channel}:WAV:CFG {(int)RunMode:X2} {_adcAmplitude:X4} {_adcOffset:X4} {DutyCycle:X2} {SamplesCount:X4} {Prescaler:X4}";
             var response = _writeRead(cmd);
+        }
+
+        public int ApbClock
+        {
+            get { return APB_CLOCK; }
         }
 
 
@@ -113,7 +119,7 @@ namespace Knv.DAQ.IO
             Offset = 0;
             DutyCycle = 0;
             SamplesCount = 0;
-            Divider = 1;
+            Prescaler = 1;
             WriteConfig();
         }
 
@@ -135,7 +141,18 @@ namespace Knv.DAQ.IO
             _adcOffset = int.Parse(args[2], NumberStyles.AllowHexSpecifier, CultureInfo.GetCultureInfo("en-US"));
             DutyCycle = int.Parse(args[3], NumberStyles.AllowHexSpecifier, CultureInfo.GetCultureInfo("en-US"));
             SamplesCount = int.Parse(args[4], NumberStyles.AllowHexSpecifier, CultureInfo.GetCultureInfo("en-US"));
-            Divider = int.Parse(args[5], NumberStyles.AllowHexSpecifier, CultureInfo.GetCultureInfo("en-US"));
+            Prescaler = int.Parse(args[5], NumberStyles.AllowHexSpecifier, CultureInfo.GetCultureInfo("en-US"));
+        }
+
+        public double PeriodTime 
+        {
+            get 
+            {
+                int arr = 360;
+                double tick = ApbClock / (Prescaler + 1) / arr;
+                double signalPeriodTime = 1 / tick * SamplesCount;
+                return signalPeriodTime;
+            }        
         }
 
         public void Start()

@@ -12,13 +12,13 @@ namespace Knv.DAQ.Controls
     public partial class KnvAnalogOutputControl_v2 : UserControl
     {
 
-        Dictionary<string, WaveRunMode> RunList = new Dictionary<string, WaveRunMode>() 
+        readonly Dictionary<string, WaveRunMode> RunList = new Dictionary<string, WaveRunMode>() 
         {
             { "Single", WaveRunMode.RUN_SINGLE },
             { "Continuous", WaveRunMode.RUN_CONTINUOUS },
         };
 
-        Dictionary<string, WaveForm> WaveList = new Dictionary<string, WaveForm>()
+        readonly Dictionary<string, WaveForm> WaveList = new Dictionary<string, WaveForm>()
         {
             { "DC", WaveForm.WAVE_DC },
             { "Half Sine", WaveForm.WAVE_HALF_SINE },
@@ -112,8 +112,13 @@ namespace Knv.DAQ.Controls
         {
             get
             {
-                int i = comboBoxWave.SelectedIndex;
-                return WaveList.Values.ToList()[i];
+                if (comboBoxWave.SelectedIndex != -1)
+                {
+                    int i = comboBoxWave.SelectedIndex;
+                    return WaveList.Values.ToList()[i];
+                }
+                else
+                    return WaveForm.WAVE_CUSTOM;
             }
             set
             {
@@ -137,21 +142,21 @@ namespace Knv.DAQ.Controls
         }
 
         [Category("KNV")]
-        public double WaveAmplitude 
+        public double Amplitude 
         {
             get { return double.Parse(textBoxAmpl.Text); }
             set { textBoxAmpl.Text = value.ToString(); }
         }
 
         [Category("KNV")]
-        public double WaveOffset
+        public double Offset
         {
             get { return double.Parse(textBoxWaveOffset.Text); }
             set { textBoxWaveOffset.Text = value.ToString(); }
         }
 
         [Category("KNV")]
-        public int WaveDutyCycle
+        public int DutyCycle
         {
             get { return int.Parse(textBoxDutyCycle.Text); }
             set { textBoxDutyCycle.Text = value.ToString(); }
@@ -165,10 +170,16 @@ namespace Knv.DAQ.Controls
         }
 
         [Category("KNV")]
-        public int Divider
+        public int Prescaler
         {
-            get { return int.Parse(textBoxDivider.Text); }
-            set { textBoxDivider.Text = value.ToString(); }
+            get { return int.Parse(textBoxPrescaler.Text); }
+            set { textBoxPrescaler.Text = value.ToString(); }
+        }
+
+        [Category("KNV")]
+        public double PeriodTime 
+        {
+            set { textBoxPeriodTime.Text = value.ToString(); }
         }
 
         [Category("KNV")]
@@ -181,8 +192,6 @@ namespace Knv.DAQ.Controls
                 {
                     if (tabControl1.TabPages.Cast<TabPage>().Select(x => x.Name).Contains(value))
                         tabControl1.SelectTab(value);
-                    else
-                        throw new ApplicationException("");
                 }
             }
         }
@@ -261,6 +270,11 @@ namespace Knv.DAQ.Controls
         {
             if(_init)
                 WaveChanged?.Invoke(this, Wave);
+        }
+
+        private void tableLayoutPanel1_Paint(object sender, PaintEventArgs e)
+        {
+
         }
     }
 }
