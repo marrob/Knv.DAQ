@@ -152,5 +152,9 @@ namespace Knv.DAQ.Controls
             }
         }
 
+        private void KnvAnalogInputControl_v2_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }

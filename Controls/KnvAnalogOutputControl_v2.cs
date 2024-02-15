@@ -133,7 +133,10 @@ namespace Knv.DAQ.Controls
             get
             {
                 int i = comboBoxRunMode.SelectedIndex;
-                return RunList.Values.ToList()[i];
+                if (i == -1)
+                    return RunList.Values.ToList()[i];
+                else
+                    return WaveRunMode.RUN_SINGLE;
             }
             set
             {

@@ -21,7 +21,7 @@
             //
             // StackPanel
             //
-            this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.AutoSizeMode = AutoSizeMode.GrowAndShrink;
             this.WrapContents = false;
             this.ResumeLayout(false);
         }
@@ -52,6 +52,7 @@
         /// If this value is false then only control that have AutoSize == true will be resized to
         /// fit the client size of this container.
         /// </summary>
+        [Category("Stack Panel")]
         [DefaultValue(true)]
         public bool ForceAutoresizeOfControls { get; set; }
 

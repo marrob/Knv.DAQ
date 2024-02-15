@@ -249,7 +249,7 @@
             this.tabPageDC.Location = new System.Drawing.Point(4, 22);
             this.tabPageDC.Name = "tabPageDC";
             this.tabPageDC.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPageDC.Size = new System.Drawing.Size(366, 189);
+            this.tabPageDC.Size = new System.Drawing.Size(366, 195);
             this.tabPageDC.TabIndex = 0;
             this.tabPageDC.Text = "DC";
             this.tabPageDC.UseVisualStyleBackColor = true;
@@ -369,7 +369,7 @@
             this.tabPageSettings.Controls.Add(this.textBoxMulti);
             this.tabPageSettings.Location = new System.Drawing.Point(4, 22);
             this.tabPageSettings.Name = "tabPageSettings";
-            this.tabPageSettings.Size = new System.Drawing.Size(366, 189);
+            this.tabPageSettings.Size = new System.Drawing.Size(366, 195);
             this.tabPageSettings.TabIndex = 2;
             this.tabPageSettings.Text = "Settings";
             this.tabPageSettings.UseVisualStyleBackColor = true;
