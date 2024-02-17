@@ -73,8 +73,12 @@
                     knvAnalogOutputControl1.Prescaler = DaqIo.Instance.Ao1.Prescaler;
                     knvAnalogOutputControl1.PeriodTime = DaqIo.Instance.Ao1.PeriodTime;
 
-                    double ao1dc = DaqIo.Instance.Ao1.GetDC();
-                    knvAnalogOutputControl1.Value = ao1dc;
+
+                    if (knvAnalogOutputControl1.Wave == WaveForm.WAVE_DC)
+                    {
+                        double aoi1dc = DaqIo.Instance.Ao1.Amplitude;
+                        knvAnalogOutputControl1.Value = aoi1dc;
+                    }
 
                     knvAnalogOutputControl2.Wave = DaqIo.Instance.Ao2.SelectedWave();
                     DaqIo.Instance.Ao2.ReadConfig();
@@ -87,8 +91,11 @@
                     knvAnalogOutputControl2.Prescaler = DaqIo.Instance.Ao2.Prescaler;
                     knvAnalogOutputControl2.PeriodTime = DaqIo.Instance.Ao2.PeriodTime;
 
-                    double ao2dc = DaqIo.Instance.Ao2.GetDC();
-                    knvAnalogOutputControl2.Value = ao2dc;
+                    if (knvAnalogOutputControl2.Wave == WaveForm.WAVE_DC)
+                    {
+                        double ao2dc = DaqIo.Instance.Ao1.Amplitude;
+                        knvAnalogOutputControl2.Value = ao2dc;
+                    }
                 }
             }));
 
@@ -107,15 +114,18 @@
             {
                 try
                 {
-                    var ai1 = DaqIo.Instance.Ai1;
-                    var ai2 = DaqIo.Instance.Ai2;
-                    var ai3 = DaqIo.Instance.Ai3;
-                    var ai4 = DaqIo.Instance.Ai4;
-           
-                   knvAnalogInputControl1.AddSample(ai1);
-                   knvAnalogInputControl2.AddSample(ai2);
-                   knvAnalogInputControl3.AddSample(ai3);
-                   knvAnalogInputControl4.AddSample(ai4);
+                    if (Settings.Default.AnalogInputPolling)
+                    {   
+                        var ai1 = DaqIo.Instance.Ai1;
+                        var ai2 = DaqIo.Instance.Ai2;
+                        var ai3 = DaqIo.Instance.Ai3;
+                        var ai4 = DaqIo.Instance.Ai4;
+
+                        knvAnalogInputControl1.AddSample(ai1);
+                        knvAnalogInputControl2.AddSample(ai2);
+                        knvAnalogInputControl3.AddSample(ai3);
+                        knvAnalogInputControl4.AddSample(ai4);
+                    }
                 }
                 catch (Exception ex)
                 {
@@ -182,7 +192,14 @@
             {
                 try
                 {
-                    DaqIo.Instance.Ao1.SetDC(volts);
+                    DaqIo.Instance.Ao1.SelectWave(WaveForm.WAVE_DC);
+                    DaqIo.Instance.Ao1.RunMode = WaveRunMode.RUN_SINGLE;
+                    DaqIo.Instance.Ao1.Amplitude = volts;
+                    DaqIo.Instance.Ao1.Offset = 0;
+                    DaqIo.Instance.Ao1.DutyCycle = 0;
+                    DaqIo.Instance.Ao1.SamplesCount = 0;
+                    DaqIo.Instance.Ao1.Prescaler = 1;
+                    DaqIo.Instance.Ao1.WriteConfig();
                 }
                 catch (Exception ex)
                 {
@@ -225,7 +242,14 @@
             {
                 try
                 {
-                    DaqIo.Instance.Ao2.SetDC(volts);
+                    DaqIo.Instance.Ao2.SelectWave(WaveForm.WAVE_DC);
+                    DaqIo.Instance.Ao2.RunMode = WaveRunMode.RUN_SINGLE;
+                    DaqIo.Instance.Ao2.Amplitude = volts;
+                    DaqIo.Instance.Ao2.Offset = 0;
+                    DaqIo.Instance.Ao2.DutyCycle = 0;
+                    DaqIo.Instance.Ao2.SamplesCount = 0;
+                    DaqIo.Instance.Ao2.Prescaler = 1;
+                    DaqIo.Instance.Ao2.WriteConfig();
                 }
                 catch (Exception ex)
                 {

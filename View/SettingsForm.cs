@@ -16,7 +16,11 @@ namespace Knv.DAQ.View
         private void SettingsForm_Load(object sender, EventArgs e)
         {
 
+            checkBoxAnalogInputPolling.Checked = Settings.Default.AnalogInputPolling;
+            checkBoxAnalogInputPolling.CheckedChanged += (o, ey) =>  Settings.Default.AnalogInputPolling = checkBoxAnalogInputPolling.Checked; 
 
+            checkBoxUpTimeCounterPolling.Checked = Settings.Default.UpTimeCounterPolling;
+            checkBoxUpTimeCounterPolling.CheckedChanged += (o, ey) => Settings.Default.UpTimeCounterPolling = checkBoxUpTimeCounterPolling.Checked;
 
         }
 

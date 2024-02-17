@@ -63,7 +63,7 @@
             this.textBoxUnit = new System.Windows.Forms.TextBox();
             this.label13 = new System.Windows.Forms.Label();
             this.label12 = new System.Windows.Forms.Label();
-            this.textBoxMulti = new System.Windows.Forms.TextBox();
+            this.textBoxMultiplier = new System.Windows.Forms.TextBox();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.tableLayoutPanel3 = new System.Windows.Forms.TableLayoutPanel();
             this.labelPhyName = new System.Windows.Forms.Label();
@@ -194,7 +194,7 @@
             this.comboBoxWave.Name = "comboBoxWave";
             this.comboBoxWave.Size = new System.Drawing.Size(105, 21);
             this.comboBoxWave.TabIndex = 5;
-            this.comboBoxWave.SelectedIndexChanged += new System.EventHandler(this.comboBoxWave_SelectedIndexChanged);
+            this.comboBoxWave.SelectionChangeCommitted += new System.EventHandler(this.comboBoxWave_SelectionChangeCommitted);
             // 
             // buttonStop
             // 
@@ -366,7 +366,7 @@
             this.tabPageSettings.Controls.Add(this.textBoxUnit);
             this.tabPageSettings.Controls.Add(this.label13);
             this.tabPageSettings.Controls.Add(this.label12);
-            this.tabPageSettings.Controls.Add(this.textBoxMulti);
+            this.tabPageSettings.Controls.Add(this.textBoxMultiplier);
             this.tabPageSettings.Location = new System.Drawing.Point(4, 22);
             this.tabPageSettings.Name = "tabPageSettings";
             this.tabPageSettings.Size = new System.Drawing.Size(366, 195);
@@ -377,7 +377,7 @@
             // label15
             // 
             this.label15.AutoSize = true;
-            this.label15.Location = new System.Drawing.Point(9, 27);
+            this.label15.Location = new System.Drawing.Point(35, 27);
             this.label15.Name = "label15";
             this.label15.Size = new System.Drawing.Size(30, 13);
             this.label15.TabIndex = 12;
@@ -385,14 +385,14 @@
             // 
             // textBoxTitle
             // 
-            this.textBoxTitle.Location = new System.Drawing.Point(47, 24);
+            this.textBoxTitle.Location = new System.Drawing.Point(71, 24);
             this.textBoxTitle.Name = "textBoxTitle";
             this.textBoxTitle.Size = new System.Drawing.Size(133, 20);
             this.textBoxTitle.TabIndex = 11;
             // 
             // textBoxUnit
             // 
-            this.textBoxUnit.Location = new System.Drawing.Point(47, 72);
+            this.textBoxUnit.Location = new System.Drawing.Point(71, 72);
             this.textBoxUnit.Name = "textBoxUnit";
             this.textBoxUnit.Size = new System.Drawing.Size(133, 20);
             this.textBoxUnit.TabIndex = 10;
@@ -401,7 +401,7 @@
             // label13
             // 
             this.label13.AutoSize = true;
-            this.label13.Location = new System.Drawing.Point(18, 75);
+            this.label13.Location = new System.Drawing.Point(36, 75);
             this.label13.Name = "label13";
             this.label13.Size = new System.Drawing.Size(29, 13);
             this.label13.TabIndex = 9;
@@ -410,19 +410,19 @@
             // label12
             // 
             this.label12.AutoSize = true;
-            this.label12.Location = new System.Drawing.Point(15, 51);
+            this.label12.Location = new System.Drawing.Point(14, 51);
             this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(32, 13);
+            this.label12.Size = new System.Drawing.Size(51, 13);
             this.label12.TabIndex = 4;
-            this.label12.Text = "Multi:";
+            this.label12.Text = "Multiplier:";
             // 
-            // textBoxMulti
+            // textBoxMultiplier
             // 
-            this.textBoxMulti.Location = new System.Drawing.Point(47, 48);
-            this.textBoxMulti.Name = "textBoxMulti";
-            this.textBoxMulti.Size = new System.Drawing.Size(133, 20);
-            this.textBoxMulti.TabIndex = 2;
-            this.textBoxMulti.Text = "1.00";
+            this.textBoxMultiplier.Location = new System.Drawing.Point(71, 48);
+            this.textBoxMultiplier.Name = "textBoxMultiplier";
+            this.textBoxMultiplier.Size = new System.Drawing.Size(133, 20);
+            this.textBoxMultiplier.TabIndex = 2;
+            this.textBoxMultiplier.Text = "1.00";
             // 
             // tableLayoutPanel1
             // 
@@ -438,7 +438,6 @@
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tableLayoutPanel1.Size = new System.Drawing.Size(380, 260);
             this.tableLayoutPanel1.TabIndex = 4;
-            this.tableLayoutPanel1.Paint += new System.Windows.Forms.PaintEventHandler(this.tableLayoutPanel1_Paint);
             // 
             // tableLayoutPanel3
             // 
@@ -548,7 +547,7 @@
         private System.Windows.Forms.TextBox textBoxUnit;
         private System.Windows.Forms.Label label13;
         private System.Windows.Forms.Label label12;
-        private System.Windows.Forms.TextBox textBoxMulti;
+        private System.Windows.Forms.TextBox textBoxMultiplier;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel3;
         private System.Windows.Forms.Label labelSettings;

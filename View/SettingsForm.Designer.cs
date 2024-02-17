@@ -30,6 +30,8 @@
         {
             this.buttonOk = new System.Windows.Forms.Button();
             this.buttonCancel = new System.Windows.Forms.Button();
+            this.checkBoxAnalogInputPolling = new System.Windows.Forms.CheckBox();
+            this.checkBoxUpTimeCounterPolling = new System.Windows.Forms.CheckBox();
             this.SuspendLayout();
             // 
             // buttonOk
@@ -52,6 +54,26 @@
             this.buttonCancel.Text = "Cancel";
             this.buttonCancel.UseVisualStyleBackColor = true;
             // 
+            // checkBoxAnalogInputPolling
+            // 
+            this.checkBoxAnalogInputPolling.AutoSize = true;
+            this.checkBoxAnalogInputPolling.Location = new System.Drawing.Point(12, 12);
+            this.checkBoxAnalogInputPolling.Name = "checkBoxAnalogInputPolling";
+            this.checkBoxAnalogInputPolling.Size = new System.Drawing.Size(125, 17);
+            this.checkBoxAnalogInputPolling.TabIndex = 2;
+            this.checkBoxAnalogInputPolling.Text = "Analog Inputs Polling";
+            this.checkBoxAnalogInputPolling.UseVisualStyleBackColor = true;
+            // 
+            // checkBoxUpTimeCounterPolling
+            // 
+            this.checkBoxUpTimeCounterPolling.AutoSize = true;
+            this.checkBoxUpTimeCounterPolling.Location = new System.Drawing.Point(12, 35);
+            this.checkBoxUpTimeCounterPolling.Name = "checkBoxUpTimeCounterPolling";
+            this.checkBoxUpTimeCounterPolling.Size = new System.Drawing.Size(137, 17);
+            this.checkBoxUpTimeCounterPolling.TabIndex = 3;
+            this.checkBoxUpTimeCounterPolling.Text = "UpTime Counter Polling";
+            this.checkBoxUpTimeCounterPolling.UseVisualStyleBackColor = true;
+            // 
             // SettingsForm
             // 
             this.AcceptButton = this.buttonOk;
@@ -59,6 +81,8 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.CancelButton = this.buttonCancel;
             this.ClientSize = new System.Drawing.Size(410, 142);
+            this.Controls.Add(this.checkBoxUpTimeCounterPolling);
+            this.Controls.Add(this.checkBoxAnalogInputPolling);
             this.Controls.Add(this.buttonCancel);
             this.Controls.Add(this.buttonOk);
             this.MaximizeBox = false;
@@ -69,6 +93,7 @@
             this.TopMost = true;
             this.Load += new System.EventHandler(this.SettingsForm_Load);
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -76,5 +101,7 @@
 
         private System.Windows.Forms.Button buttonOk;
         private System.Windows.Forms.Button buttonCancel;
+        private System.Windows.Forms.CheckBox checkBoxAnalogInputPolling;
+        private System.Windows.Forms.CheckBox checkBoxUpTimeCounterPolling;
     }
 }

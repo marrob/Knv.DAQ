@@ -110,6 +110,8 @@
     <Compile Include="Events\UpdatingStateChangedAppEvent.cs" />
     <Compile Include="IO\AnalogOutput.cs" />
     <Compile Include="IO\DaqIo.cs" />
+    <Compile Include="IO\MPRT220416_ADC_FW_UnitTest.cs" />
+    <Compile Include="IO\Tools.cs" />
     <Compile Include="IO\Wave_UnitTest.cs" />
     <Compile Include="Settings.cs" />
     <Compile Include="StatusBar\UpTime.cs">

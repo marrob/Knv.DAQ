@@ -109,27 +109,6 @@ namespace Knv.DAQ.IO
             get { return APB_CLOCK; }
         }
 
-
-        public void SetDC(double volts)
-        {
-
-            SelectWave(WaveForm.WAVE_DC);
-            RunMode = WaveRunMode.RUN_SINGLE;
-            Amplitude = volts;
-            Offset = 0;
-            DutyCycle = 0;
-            SamplesCount = 0;
-            Prescaler = 1;
-            WriteConfig();
-        }
-
-        public double GetDC()
-        {
-            SelectWave(WaveForm.WAVE_DC);
-            ReadConfig();
-            return Amplitude;
-        }
-
         public void ReadConfig()
         {
             string cmd = $"AO{_channel}:WAV:CFG?";
@@ -144,14 +123,20 @@ namespace Knv.DAQ.IO
             Prescaler = int.Parse(args[5], NumberStyles.AllowHexSpecifier, CultureInfo.GetCultureInfo("en-US"));
         }
 
+
+        public static double CalculatePeriodTime(int prescaler, int samples)
+        {
+            int arr = 360;
+            double tick = APB_CLOCK / (prescaler + 1) / arr;
+            double signalPeriodTime = 1 / tick * samples;
+            return signalPeriodTime;
+        }
+
         public double PeriodTime 
         {
             get 
             {
-                int arr = 360;
-                double tick = ApbClock / (Prescaler + 1) / arr;
-                double signalPeriodTime = 1 / tick * SamplesCount;
-                return signalPeriodTime;
+                return CalculatePeriodTime(Prescaler, SamplesCount);
             }        
         }
 

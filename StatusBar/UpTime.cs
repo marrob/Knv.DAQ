@@ -25,7 +25,8 @@ namespace Knv.DAQ.StatusBar
                 {
                     try
                     {
-                       // Text = "UpTime Counter: " + DaqIo.Instance.GetUpTime();
+                        if(Settings.Default.UpTimeCounterPolling)
+                            Text = "UpTime Counter: " + DaqIo.Instance.GetUpTime();
                     }
                     catch (Exception ex) 
                     {

@@ -29,15 +29,16 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.knvStackPanel1 = new Knv.DAQ.Controls.KnvStackPanel();
+            this.knvAnalogInputControl1 = new Knv.DAQ.Controls.KnvAnalogInputControl_v2();
             this.knvAnalogInputControl2 = new Knv.DAQ.Controls.KnvAnalogInputControl_v2();
             this.knvAnalogInputControl3 = new Knv.DAQ.Controls.KnvAnalogInputControl_v2();
             this.knvAnalogInputControl4 = new Knv.DAQ.Controls.KnvAnalogInputControl_v2();
-            this.knvAnalogInputControl1 = new Knv.DAQ.Controls.KnvAnalogInputControl_v2();
             this.panel1 = new System.Windows.Forms.Panel();
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
             this.tableLayoutPanel3 = new System.Windows.Forms.TableLayoutPanel();
@@ -109,10 +110,10 @@
             // knvStackPanel1
             // 
             this.knvStackPanel1.AutoScroll = true;
+            this.knvStackPanel1.Controls.Add(this.knvAnalogInputControl1);
             this.knvStackPanel1.Controls.Add(this.knvAnalogInputControl2);
             this.knvStackPanel1.Controls.Add(this.knvAnalogInputControl3);
             this.knvStackPanel1.Controls.Add(this.knvAnalogInputControl4);
-            this.knvStackPanel1.Controls.Add(this.knvAnalogInputControl1);
             this.knvStackPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.knvStackPanel1.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
             this.knvStackPanel1.Location = new System.Drawing.Point(392, 3);
@@ -120,11 +121,28 @@
             this.knvStackPanel1.Size = new System.Drawing.Size(1216, 796);
             this.knvStackPanel1.TabIndex = 0;
             // 
+            // knvAnalogInputControl1
+            // 
+            this.knvAnalogInputControl1.BackColor = System.Drawing.SystemColors.Control;
+            this.knvAnalogInputControl1.Channel = System.Drawing.SystemColors.Control;
+            this.knvAnalogInputControl1.Location = new System.Drawing.Point(4, 4);
+            this.knvAnalogInputControl1.Margin = new System.Windows.Forms.Padding(4);
+            this.knvAnalogInputControl1.MaxRawValue = 10D;
+            this.knvAnalogInputControl1.Multiplier = double.NaN;
+            this.knvAnalogInputControl1.Name = "knvAnalogInputControl1";
+            this.knvAnalogInputControl1.Offset = double.NaN;
+            this.knvAnalogInputControl1.PhyName = "AIx";
+            this.knvAnalogInputControl1.SelctedTab = "tabPageNumeric";
+            this.knvAnalogInputControl1.Size = new System.Drawing.Size(1191, 300);
+            this.knvAnalogInputControl1.TabIndex = 4;
+            this.knvAnalogInputControl1.Title = "Analog Input";
+            this.knvAnalogInputControl1.Unit = "V";
+            // 
             // knvAnalogInputControl2
             // 
             this.knvAnalogInputControl2.BackColor = System.Drawing.SystemColors.Control;
             this.knvAnalogInputControl2.Channel = System.Drawing.SystemColors.Control;
-            this.knvAnalogInputControl2.Location = new System.Drawing.Point(4, 4);
+            this.knvAnalogInputControl2.Location = new System.Drawing.Point(4, 312);
             this.knvAnalogInputControl2.Margin = new System.Windows.Forms.Padding(4);
             this.knvAnalogInputControl2.MaxRawValue = 10D;
             this.knvAnalogInputControl2.Multiplier = double.NaN;
@@ -141,7 +159,7 @@
             // 
             this.knvAnalogInputControl3.BackColor = System.Drawing.SystemColors.Control;
             this.knvAnalogInputControl3.Channel = System.Drawing.SystemColors.Control;
-            this.knvAnalogInputControl3.Location = new System.Drawing.Point(4, 312);
+            this.knvAnalogInputControl3.Location = new System.Drawing.Point(4, 620);
             this.knvAnalogInputControl3.Margin = new System.Windows.Forms.Padding(4);
             this.knvAnalogInputControl3.MaxRawValue = 10D;
             this.knvAnalogInputControl3.Multiplier = double.NaN;
@@ -158,7 +176,7 @@
             // 
             this.knvAnalogInputControl4.BackColor = System.Drawing.SystemColors.Control;
             this.knvAnalogInputControl4.Channel = System.Drawing.SystemColors.Control;
-            this.knvAnalogInputControl4.Location = new System.Drawing.Point(4, 620);
+            this.knvAnalogInputControl4.Location = new System.Drawing.Point(4, 928);
             this.knvAnalogInputControl4.Margin = new System.Windows.Forms.Padding(4);
             this.knvAnalogInputControl4.MaxRawValue = 10D;
             this.knvAnalogInputControl4.Multiplier = double.NaN;
@@ -170,23 +188,6 @@
             this.knvAnalogInputControl4.TabIndex = 7;
             this.knvAnalogInputControl4.Title = "Analog Input";
             this.knvAnalogInputControl4.Unit = "V";
-            // 
-            // knvAnalogInputControl1
-            // 
-            this.knvAnalogInputControl1.BackColor = System.Drawing.SystemColors.Control;
-            this.knvAnalogInputControl1.Channel = System.Drawing.SystemColors.Control;
-            this.knvAnalogInputControl1.Location = new System.Drawing.Point(4, 928);
-            this.knvAnalogInputControl1.Margin = new System.Windows.Forms.Padding(4);
-            this.knvAnalogInputControl1.MaxRawValue = 10D;
-            this.knvAnalogInputControl1.Multiplier = double.NaN;
-            this.knvAnalogInputControl1.Name = "knvAnalogInputControl1";
-            this.knvAnalogInputControl1.Offset = double.NaN;
-            this.knvAnalogInputControl1.PhyName = "AIx";
-            this.knvAnalogInputControl1.SelctedTab = "tabPageNumeric";
-            this.knvAnalogInputControl1.Size = new System.Drawing.Size(1191, 300);
-            this.knvAnalogInputControl1.TabIndex = 4;
-            this.knvAnalogInputControl1.Title = "Analog Input";
-            this.knvAnalogInputControl1.Unit = "V";
             // 
             // panel1
             // 
@@ -239,6 +240,7 @@
             this.knvAnalogOutputControl1.Offset = 0D;
             this.knvAnalogOutputControl1.PhyName = "AOx";
             this.knvAnalogOutputControl1.Prescaler = 0;
+            this.knvAnalogOutputControl1.RunMode = Knv.DAQ.IO.WaveRunMode.RUN_SINGLE;
             this.knvAnalogOutputControl1.SamplesCount = 0;
             this.knvAnalogOutputControl1.SelctedTab = "tabPageDC";
             this.knvAnalogOutputControl1.Size = new System.Drawing.Size(369, 280);
@@ -260,6 +262,7 @@
             this.knvAnalogOutputControl2.Offset = 0D;
             this.knvAnalogOutputControl2.PhyName = "AOx";
             this.knvAnalogOutputControl2.Prescaler = 0;
+            this.knvAnalogOutputControl2.RunMode = Knv.DAQ.IO.WaveRunMode.RUN_SINGLE;
             this.knvAnalogOutputControl2.SamplesCount = 0;
             this.knvAnalogOutputControl2.SelctedTab = "tabPageDC";
             this.knvAnalogOutputControl2.Size = new System.Drawing.Size(369, 244);
@@ -291,6 +294,7 @@
             this.Controls.Add(this.splitContainer1);
             this.Controls.Add(this.statusStrip1);
             this.Controls.Add(this.menuStrip1);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MainMenuStrip = this.menuStrip1;
             this.Name = "MainForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.Manual;

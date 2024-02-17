@@ -78,7 +78,7 @@ namespace Knv.DAQ.Controls
                 if (_multi != value)
                 {
                     _multi = value;
-                    textBoxMulti.Text = value.ToString();
+                    textBoxMultiplier.Text = value.ToString();
                     SettingsChanged();
                 }
             }
@@ -123,7 +123,6 @@ namespace Knv.DAQ.Controls
             set
             {
                 comboBoxWave.SelectedIndex = WaveList.Values.ToList().IndexOf(value);
-                _init = true;
             }
         }
 
@@ -134,9 +133,9 @@ namespace Knv.DAQ.Controls
             {
                 int i = comboBoxRunMode.SelectedIndex;
                 if (i == -1)
-                    return RunList.Values.ToList()[i];
+                   return WaveRunMode.RUN_SINGLE;
                 else
-                    return WaveRunMode.RUN_SINGLE;
+                   return RunList.Values.ToList()[i];
             }
             set
             {
@@ -168,14 +167,31 @@ namespace Knv.DAQ.Controls
         [Category("KNV")]
         public int SamplesCount
         {
-            get { return int.Parse(textBoxSamplesCount.Text); }
+            get 
+            {
+                int samplesValue = 1;
+                if (int.TryParse(textBoxSamplesCount.Text, out samplesValue))
+                    textBoxSamplesCount.BackColor = Color.White;
+                else
+                    textBoxSamplesCount.BackColor = Color.Red;
+                return samplesValue;
+            }
             set { textBoxSamplesCount.Text = value.ToString(); }
         }
 
         [Category("KNV")]
         public int Prescaler
         {
-            get { return int.Parse(textBoxPrescaler.Text); }
+            get 
+            { 
+                int prescalerValue = 1;
+                if(int.TryParse(textBoxPrescaler.Text,out prescalerValue))
+                    textBoxPrescaler.BackColor = Color.White;
+                else
+                    textBoxPrescaler.BackColor= Color.Red;
+                return prescalerValue; 
+            
+            }
             set { textBoxPrescaler.Text = value.ToString(); }
         }
 
@@ -198,8 +214,6 @@ namespace Knv.DAQ.Controls
                 }
             }
         }
-
-        bool _init = false;
 
         void SettingsChanged()
         {
@@ -231,17 +245,17 @@ namespace Knv.DAQ.Controls
                 labelTitle.Text = textBoxTitle.Text;
             };
 
-            textBoxMulti.TextChanged += (o, e) =>
+            textBoxMultiplier.TextChanged += (o, e) =>
             {
-                if (double.TryParse(textBoxMulti.Text, out double value))
+                if (double.TryParse(textBoxMultiplier.Text, out double value))
                 {
-                    textBoxMulti.BackColor = Color.White;
+                    textBoxMultiplier.BackColor = Color.White;
                     Multiplier = value;
                     SettingsChanged();
                 }
                 else
                 {
-                    textBoxMulti.BackColor = Color.Red;
+                    textBoxMultiplier.BackColor = Color.Red;
                 }
             };
 
@@ -267,17 +281,21 @@ namespace Knv.DAQ.Controls
             { 
                 Start?.Invoke(this, EventArgs.Empty); 
             };
+
+            textBoxSamplesCount.TextChanged += (o, e) =>
+            {
+                textBoxPeriodTime.Text = AnalogOutput.CalculatePeriodTime(Prescaler, SamplesCount).ToString();
+            };
+
+            textBoxPrescaler.TextChanged += (o, e) =>
+            {
+                textBoxPeriodTime.Text = AnalogOutput.CalculatePeriodTime(Prescaler, SamplesCount).ToString();
+            };
         }
 
-        private void comboBoxWave_SelectedIndexChanged(object sender, EventArgs e)
+        private void comboBoxWave_SelectionChangeCommitted(object sender, EventArgs e)
         {
-            if(_init)
-                WaveChanged?.Invoke(this, Wave);
-        }
-
-        private void tableLayoutPanel1_Paint(object sender, PaintEventArgs e)
-        {
-
+            WaveChanged?.Invoke(this, Wave);
         }
     }
 }

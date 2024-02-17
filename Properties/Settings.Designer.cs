@@ -502,5 +502,29 @@ namespace Knv.DAQ.Properties {
                 this["Ai4SelectedTab"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("True")]
+        public bool AnalogInputPolling {
+            get {
+                return ((bool)(this["AnalogInputPolling"]));
+            }
+            set {
+                this["AnalogInputPolling"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("False")]
+        public bool UpTimeCounterPolling {
+            get {
+                return ((bool)(this["UpTimeCounterPolling"]));
+            }
+            set {
+                this["UpTimeCounterPolling"] = value;
+            }
+        }
     }
 }
