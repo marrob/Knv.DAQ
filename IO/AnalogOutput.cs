@@ -31,7 +31,7 @@ namespace Knv.DAQ.IO
         const int APB_CLOCK = 72000000;
 
         private readonly int _channel;
-        private Func<string, string> _writeRead;
+        readonly private Func<string, string> _io;
 
         public WaveRunMode RunMode { get; set; }
 
@@ -80,17 +80,17 @@ namespace Knv.DAQ.IO
         public AnalogOutput(int ch, Func<string, string> writeRead)
         {
             _channel = ch;
-            this._writeRead = writeRead;
+            this._io = writeRead;
         }
 
         public void SelectWave(WaveForm wave)
         {
-            var response = _writeRead($"AO{_channel}:WAV:TYP {(int)wave:X2}");
+            var response = _io($"AO{_channel}:WAV:TYP {(int)wave:X2}");
         }
 
         public WaveForm SelectedWave()
         {
-            int wave = int.Parse(_writeRead($"AO{_channel}:WAV:TYP?"), NumberStyles.AllowHexSpecifier, CultureInfo.GetCultureInfo("en-US"));
+            int wave = int.Parse(_io($"AO{_channel}:WAV:TYP?"), NumberStyles.AllowHexSpecifier, CultureInfo.GetCultureInfo("en-US"));
 
             return (WaveForm)wave;
         }
@@ -101,7 +101,7 @@ namespace Knv.DAQ.IO
                 _adcOffset -= 1;
 
             string cmd = $"AO{_channel}:WAV:CFG {(int)RunMode:X2} {_adcAmplitude:X4} {_adcOffset:X4} {DutyCycle:X2} {SamplesCount:X4} {Prescaler:X4}";
-            var response = _writeRead(cmd);
+            var response = _io(cmd);
         }
 
         public int ApbClock
@@ -112,7 +112,7 @@ namespace Knv.DAQ.IO
         public void ReadConfig()
         {
             string cmd = $"AO{_channel}:WAV:CFG?";
-            var response = _writeRead(cmd);
+            var response = _io(cmd);
             var args = response.Split(' ');
 
             RunMode = (WaveRunMode)int.Parse(args[0], NumberStyles.AllowHexSpecifier, CultureInfo.GetCultureInfo("en-US"));
@@ -144,13 +144,13 @@ namespace Knv.DAQ.IO
         {
             WriteConfig();
             string cmd = $"AO{_channel}:WAV:START";
-            _writeRead(cmd);
+            _io(cmd);
         }
 
         public void Stop()
         {
             string cmd = $"AO{_channel}:WAV:STOP";
-            _writeRead(cmd);
+            _io(cmd);
         }
     }
 }

@@ -108,9 +108,17 @@
     <Compile Include="Events\EventAggregator.cs" />
     <Compile Include="Events\ShowAppEvent.cs" />
     <Compile Include="Events\UpdatingStateChangedAppEvent.cs" />
+    <Compile Include="IO\AnalogInput.cs" />
     <Compile Include="IO\AnalogOutput.cs" />
     <Compile Include="IO\DaqIo.cs" />
+    <Compile Include="IO\AnalogInput_UnitTest.cs" />
     <Compile Include="IO\MPRT220416_ADC_FW_UnitTest.cs" />
+    <Compile Include="IO\PlotForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="IO\PlotForm.Designer.cs">
+      <DependentUpon>PlotForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="IO\Tools.cs" />
     <Compile Include="IO\Wave_UnitTest.cs" />
     <Compile Include="Settings.cs" />
@@ -160,6 +168,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Controls\KnvTracingControl.resx">
       <DependentUpon>KnvTracingControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="IO\PlotForm.resx">
+      <DependentUpon>PlotForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="View\HowIsWorkingForm.resx">
       <DependentUpon>HowIsWorkingForm.cs</DependentUpon>

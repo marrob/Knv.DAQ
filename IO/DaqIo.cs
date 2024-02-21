@@ -320,7 +320,6 @@ namespace Knv.DAQ.IO
         const double STM32_VREF = 3.3;      
         const int STM32_ADC_MAX = 4096;
         const double STM32_LSB = STM32_VREF / STM32_ADC_MAX;
-        const double AO_MUL = 3.0303;
         const double AI_DIV = 3.06;
 
 
